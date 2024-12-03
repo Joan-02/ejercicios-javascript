@@ -1,3 +1,8 @@
+
+
+
+
+sfdsfsdf
 /*
   1. Crea un array que contenga un listado de tareas. Las tareas tienen un texto y pueden estar completadas o pendientes. 
 */
@@ -19,8 +24,8 @@ const taskList = [
 
 const taskIncompleted = [];
 
-taskList.forEach(function (task) {
-  /** task es el nombre del objeto */ console.log("se está llamando", task);
+taskList.forEach(function (task) {  /** task es el nombre del objeto */ 
+  console.log("se está llamando",task);
   if (!task.completed) {
     taskIncompleted.push(task);
   }
@@ -72,10 +77,8 @@ const vehicle = [
 
 const taskIncompleted = [];
 
-vehicle.forEach(function (ruperto) {
-  /** ruperto es el nombre del objeto */ console.log(
-    "se está llamando",
-    ruperto
+vehicle.forEach(function (ruperto) {  /** ruperto es el nombre del objeto */ 
+  console.log("se está llamando",ruperto
   );
 
   if (ruperto.color === "blanco") {
@@ -151,19 +154,19 @@ console.log("original", shoppingList);
   1. Dado el siguiente carrito de la compra, calcular el precio total y mostrarlo por pantalla con console.log
 */
 const shoppingCart = [
-  { product: "Red wine", price: 20, quantity: 1 },
-  { product: "water", price: 1, quantity: 2 },
-  { product: "Pizza carbonara", price: 10, quantity: 3 },
-  { product: "Tiramisú", price: 5.99, quantity: 2 },
-];
+	{ product: 'Red wine', price: 20, quantity: 1},
+  { product: 'water', price: 1, quantity: 2 },
+  { product: 'Pizza carbonara', price: 10, quantity: 3 },
+  { product: 'Tiramisú', price: 5.99, quantity: 2 }
+]
 
 let totalPriceProducts = 0;
 
-shoppingCart.forEach(function (item) {
+shoppingCart.forEach(function(item) {
   totalPriceProducts += item.price * item.quantity;
 });
 
-console.log(totalPriceProducts);
+console.log (totalPriceProducts);
 
 /*
   2. Crea un array que contenga un listado de tareas. Las tareas tienen un texto y pueden estar completadas o pendientes. 
@@ -176,14 +179,14 @@ const tasks = [
   { name: "homework", completed: true },
   { name: "clean", completed: true },
   { name: "sport", completed: true },
-  { name: "reading", completed: false },
-  { name: "cooking", completed: true },
+  { name: "reading", completed: false }, 
+  { name: "cooking", completed: true }   
 ];
 
 const taskCompleted = [];
 const taskIncompleted = [];
 
-tasks.forEach(function (task) {
+tasks.forEach(function(task) {
   if (task.completed === true) {
     taskCompleted.push(task);
   } else {
@@ -191,8 +194,8 @@ tasks.forEach(function (task) {
   }
 });
 
-console.log(taskCompleted);
-console.log(taskIncompleted);
+console.log (taskCompleted);
+console.log (taskIncompleted);
 
 /*
  3. Dado el listado de frutas que ponemos a continuación, recórrelo y crea otro array de igual 
@@ -200,21 +203,13 @@ console.log(taskIncompleted);
    - Las que crecen en los árboles son las manzanas, las peras, las granadas y los plátanos.
 */
 
-const frutas = [
-  "manzana",
-  "pera",
-  "uva",
-  "sandía",
-  "granada",
-  "plátano",
-  "melón",
-];
+const frutas = ["manzana", "pera", "uva", "sandía", "granada", "plátano", "melón"];
 const frutasConInfo = [];
-const crecenEnArbol = ["manzana", "pera", "granada", "plátano"];
+const crecenEnArbol = ["manzana", "pera", "granada", "plátano"]; 
 
-frutas.forEach(function (fruta) {
+frutas.forEach(function(fruta) {
   if (crecenEnArbol.includes(fruta)) {
-    frutasConInfo.push({ nombre: fruta, creceEnArbol: true });
+    frutasConInfo.push({nombre: fruta, creceEnArbol: true}); 
   }
 });
 
@@ -231,37 +226,38 @@ console.log(frutasConInfo);
 */
 
 const shoppingCart = [
-  { product: "Red wine", price: 20, quantity: 1, taxes: 2 },
-  { product: "water", price: 1, quantity: 2, taxes: 1 },
-  { product: "Pizza carbonara", price: 10, quantity: 3, taxes: 3 },
-  { product: "Tiramisú", price: 5.99, quantity: 2, taxes: 2 },
-];
+	{ product: 'Red wine', price: 20, quantity: 1, taxes: 2},
+  { product: 'water', price: 1, quantity: 2, taxes: 1 },
+  { product: 'Pizza carbonara', price: 10, quantity: 3, taxes: 3 },
+  { product: 'Tiramisú', price: 5.99, quantity: 2, taxes: 2 }
+]
 
 let totalPriceProducts = 0;
 
-shoppingCart.forEach(function (item) {
-  totalPriceProducts += (item.price * item.quantity * 2) / 100;
+shoppingCart.forEach(function(item) {
+  totalPriceProducts += ((item.price * item.quantity)*2)/100;
 });
 
-console.log(totalPriceProducts);
+console.log (totalPriceProducts);
 
 /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 const shoppingCart = [
-  { product: "Red wine", price: 20, quantity: 1 },
-  { product: "water", price: 1, quantity: 2 },
-  { product: "Pizza carbonara", price: 10, quantity: 3 },
-  { product: "Tiramisú", price: 5.99, quantity: 2 },
+	{ product: 'Red wine', price: 20, quantity: 1 },
+  { product: 'water', price: 1, quantity: 2 },
+  { product: 'Pizza carbonara', price: 10, quantity: 3 },
+  { product: 'Tiramisú', price: 5.99, quantity: 2 }
 ];
 
-const shoppingCartWithTaxes = [];
+const shoppingCartWithTaxes = []; 
 
-shoppingCart.forEach(function (item) {
-  const totalPrice = item.price * item.quantity;
-  const taxes = totalPrice * 0.1;
+shoppingCart.forEach(function(item) {
+  const totalPrice = item.price * item.quantity; 
+  const taxes = totalPrice * 0.1; 
   const newItem = { ...item, taxes: taxes.toFixed(2) };
 
-  shoppingCartWithTaxes.push(newItem);
+  shoppingCartWithTaxes.push(newItem); 
+
 });
 
 console.log(shoppingCartWithTaxes);
@@ -275,25 +271,25 @@ console.log(shoppingCartWithTaxes);
 */
 
 const shoppingCart = [
-  { product: "Red wine", price: 20, quantity: 1 },
-  { product: "water", price: 1, quantity: 2 },
-  { product: "Pizza carbonara", price: 10, quantity: 3 },
-  { product: "Tiramisú", price: 5.99, quantity: 2 },
+	{ product: 'Red wine', price: 20, quantity: 1 },
+  { product: 'water', price: 1, quantity: 2 },
+  { product: 'Pizza carbonara', price: 10, quantity: 3 },
+  { product: 'Tiramisú', price: 5.99, quantity: 2 }
 ];
 
 function removeProduct(productName) {
-  shoppingCart.forEach(function (item, index) {
-    if (item.product === productName) {
+  shoppingCart.forEach(function(item, index) {
+    if (item.product === productName) { 
       if (item.quantity === 1) {
-        shoppingCart.splice(index, 1);
+        shoppingCart.splice(index, 1); 
       } else {
-        item.quantity -= 1;
+        item.quantity -= 1;  
       }
     }
   });
 }
 
-removeProduct("Tiramisú");
-removeProduct("Red wine");
+removeProduct("Tiramisú");  
+removeProduct("Red wine");  
 
 console.log(shoppingCart);
