@@ -311,7 +311,17 @@ El primero será el array que queramos filtrar
 El segundo será una función que se llamará para cada elemento del array a filtrar y que debe devolver true o false . 
 Esta segunda función aceptará a su vez dos parámetros: el elemento del array (aka ruperto) y el índice que ocupa.*/
 
-function filterArray(array, filterFunction) {}
+function filterArray(array, filterFunction) {
+  const filteredArray = [];
+  
+  array.forEach(function (arrayItem, index) {
+    if (filterFunction(arrayItem, index)) {
+      filteredArray.push(arrayItem);
+    }
+  });
+
+  return filteredArray;
+}
 
 const tasks = [
   { text: "hacer deberes", isCompleted: true },
@@ -324,55 +334,74 @@ function isTaskCompleted(task, index) {
   return task.isCompleted;
 }
 
-const completedTasks = filterArray(tasks, isTaskCompleted);
+const completedTasks = filterArray(tasks, isTaskCompleted);/*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
 console.log(completedTasks);
 
-/*Filtra las frutas que no crecen en el arbol
+
+
+/*Indica las frutas que crecen en el arbol*/
 
 const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
-const noCrecen = ['uva', 'melón', 'sandía'];
-const fruitsComplete = [];
-
-const filterFruit = fruits.filter (function(fruit) {
-  if noCrecen.includes(fruit) {
-    return fruitsComplete.push ({nombre: fruta, crecenEnArbol: false})
-  }
-}); 
-
-console.log(filterFruit);*/
-
-const fruits = [
-  "manzana",
-  "pera",
-  "granada",
-  "plátano",
-  "uva",
-  "melón",
-  "sandía",
-];
 const fruitsComplete = [];
 
 fruits.forEach(function (fruitName) {
   fruitsComplete.push({
     name: fruitName,
-    growInTree:
-      fruitName === "manzana" ||
-      fruitName === "pera" ||
-      fruitName === "granada" ||
-      fruitName === "plátano",
+    growInTree: fruitName === 'manzana' || fruitName === 'pera' || (fruitName === 'granada') || (fruitName === 'plátano')
   });
 });
 
-const fruitOnFloor = fruits.find(function (fruit) {
-  return;
-});
+console.log(fruitsComplete);
+
+
+/*Filtra las frutas que crecen en el arbol con .filter*/
+
+
+const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+const fruitsComplete = [];
 
 fruits.forEach(function (fruitName) {
   fruitsComplete.push({
     name: fruitName,
-    growInTre
+    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+  });
 });
 
-const fruitOnFloor = fruits.find(function (fruit) {
-  return;
+const growInTreeArray = fruitsComplete.filter(function (fruitInfo) {
+  return fruitInfo.growInTree;
 });
+console.log(growInTreeArray);
+
+
+/*Crea un nuevo array con las frutas que crecen en el arbol con .map*/
+
+const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+
+const fruitsComplete = fruits.map(function (fruitName) {
+  return {
+    name: fruitName,
+    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+  };
+});
+
+console.log('array original', fruits);
+console.log('array nuevo', fruitsComplete);
+
+
+/*Ecuentra la primera fruta que no crece en un arbol*/
+
+const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+
+const fruitsComplete = fruits.map(function (fruitName) {
+  return {
+    name: fruitName,
+    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+  };
+});
+console.log(fruitsComplete);
+
+const fruitFound = fruitsComplete.find(function (fruitInfo) {
+  return !fruitInfo.growInTree; /*esto es lo mismo que fruitInfo.growInTree === false;*/
+});
+
+console.log(fruitFound);
