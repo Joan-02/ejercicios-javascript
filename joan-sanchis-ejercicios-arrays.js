@@ -480,5 +480,68 @@ function countSmileys(arr) {
 
 console.log (arr);
 
+/*Write a function to split a string and convert it into an array of words.
 
+Examples (Input ==> Output):
+"Robin Singh" ==> ["Robin", "Singh"]
 
+"I love arrays they are my favorite" ==> ["I", "love", "arrays", "they"*/
+
+function stringToArray(string){
+  return string.split (' '); 
+
+}
+
+console.log(stringToArray('Robin Singh'));
+
+/*Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+
+The output should be two capital letters with a dot separating them.
+
+It should look like this:Sam Harris => S.H , patrick feeney => P.F*/
+
+function abbrevName(name){
+
+  const nameArray = [];
+
+  const words = name.split(' ');
+
+  words.forEach(function(word,index){
+    const initial = word[0].toUpperCase();
+    nameArray.push(initial);
+  })
+  
+  return nameArray.join('.')
+  
+}
+
+console.log(abbrevName("John Doe"));
+
+/*In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+Examples
+highAndLow("1 2 3 4 5"); // return "5 1"*/ 
+
+function highAndLow(numbers){
+  
+  const maxAndMinNumber = [];
+  const separatedNumbers = numbers.split(' ');
+
+  separatedNumbers.forEach(function(number){
+    const maxNumber = Math.max(number);
+    maxAndMinNumber.push(maxNumber);
+    const minNumber = Math.min(number);
+    maxAndMinNumber.push(minNumber);
+  })
+
+return maxAndMinNumber;
+
+}
+
+console.log(highAndLow('1 2 3 4 5'));
+
+/*This time no story, no theory. The examples below show you how to write function accum:
+
+Examples:
+accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt"*/
