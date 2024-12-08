@@ -1,4 +1,21 @@
 /*
+- Arrays sencillas
+- Operar con arrays (.map .filter .find .some. every)
+- Funciones complejas
+*/
+
+
+
+
+
+
+
+
+
+/*ARRAYS  for.Each  .push   indexOf   .includes   .splice*/
+/*Tareas y coches, listados de compra*/
+
+/*
   1. Crea un array que contenga un listado de tareas. Las tareas tienen un texto y pueden estar completadas o pendientes. 
 */
 
@@ -29,146 +46,8 @@ taskList.forEach(function (task) {
 console.log(taskIncompleted);
 
 /*
-  2. Crea un array que contenga un listado de vehículos. Usa al menos 5 propiedades en cada vehículo. 
-*/
-
-const vehicle = [
-  {
-    marca: "ford",
-    modelo: "focus",
-    tamaño: "mediano",
-    color: "azul",
-    año: 2022,
-  },
-  {
-    marca: "citroen",
-    modelo: "C4",
-    tamaño: "grande",
-    color: "gris",
-    año: 2015,
-  },
-  {
-    marca: "ferrari",
-    modelo: "la ferrari",
-    tamaño: "mediano",
-    color: "rojo",
-    año: 2024,
-  },
-  {
-    marca: "toyota",
-    modelo: "raptor",
-    tamaño: "grande",
-    color: "negro",
-    año: 2020,
-  },
-  {
-    marca: "fiat",
-    modelo: "500",
-    tamaño: "pequeño",
-    color: "blanco",
-    año: 2019,
-  },
-];
-
-const taskIncompleted = [];
-
-vehicle.forEach(function (ruperto) {
-  /** ruperto es el nombre del objeto */ console.log(
-    "se está llamando",
-    ruperto
-  );
-
-  if (ruperto.color === "blanco") {
-    taskIncompleted.push(ruperto);
-  }
-});
-
-console.log(taskIncompleted);
-
-/*
-  3. Imagina que estás en un supermercado haciendo la compra y tienes que comprar lo que está 
-  en la variable shoppingList.
-
-  Crea una función a la que le pases dos parámetros, el array de la compra, y el elemento que has comprado
-  esa función debe buscar el elemento en el array y eliminarlo.
-
-  Por ejemplo, si le paso un array ['pepino', 'tomate', 'sandía'] y el string 'tomate', debe devolver un array ['pepino', 'sandía']
-*/
-const shoppingList = [
-  "x2 leche de coco",
-  "pimiento rojo",
-  "pimiento verde",
-  "x6 garrafas de agua",
-  "aguacates",
-  "avena",
-  "tomate frito",
-  "pepino",
-];
-
-function itemBought(list, itemToRemove) {
-  const indexToRemove = list.indexOf(itemToRemove);
-
-  if (indexToRemove > -1) {
-    list.splice(indexToRemove, 1);
-  }
-}
-
-itemBought(shoppingList, "pepino");
-console.log(shoppingList);
-
-/**
- * 4. Repite el ejercicio anterior sin modificar el array que le pasas como parámetro a la función.
- * Si ya has hecho el ejercicio anterior sin modificar el array, hazlo modificándolo.
- */
-
-const shoppingList = [
-  "x2 leche de coco",
-  "pimiento rojo",
-  "pimiento verde",
-  "x6 garrafas de agua",
-  "aguacates",
-  "avena",
-  "tomate frito",
-  "pepino",
-];
-
-function itemBought(list, itemToRemove) {
-  const listCopy = [...list]; // list.slice()
-  const indexToRemove = listCopy.indexOf(itemToRemove);
-
-  if (indexToRemove > -1) {
-    listCopy.splice(indexToRemove, 1);
-  }
-
-  return listCopy;
-}
-
-const arrayReturned = itemBought(shoppingList, "pepino");
-console.log("returned", arrayReturned);
-console.log("original", shoppingList);
-
-/*
-  1. Dado el siguiente carrito de la compra, calcular el precio total y mostrarlo por pantalla con console.log
-*/
-const shoppingCart = [
-  { product: "Red wine", price: 20, quantity: 1 },
-  { product: "water", price: 1, quantity: 2 },
-  { product: "Pizza carbonara", price: 10, quantity: 3 },
-  { product: "Tiramisú", price: 5.99, quantity: 2 },
-];
-
-let totalPriceProducts = 0;
-
-shoppingCart.forEach(function (item) {
-  totalPriceProducts += item.price * item.quantity;
-});
-
-console.log(totalPriceProducts);
-
-/*
   2. Crea un array que contenga un listado de tareas. Las tareas tienen un texto y pueden estar completadas o pendientes. 
-  A continuación filtra el array para mostrar todas las 
-  tareas que están completadas y luego todas las tareas que están pendientes.
+  A continuación filtra el array para mostrar todas las tareas que están completadas y luego todas las tareas que están pendientes.
 */
 
 const tasks = [
@@ -195,20 +74,85 @@ console.log(taskCompleted);
 console.log(taskIncompleted);
 
 /*
- 3. Dado el listado de frutas que ponemos a continuación, recórrelo y crea otro array de igual 
- longitud donde en cada elemento, aparezca el nombre de la fruta y si crece o no en un árbol.
-   - Las que crecen en los árboles son las manzanas, las peras, las granadas y los plátanos.
+  3. Crea un array que contenga un listado de vehículos. Usa al menos 5 propiedades en cada vehículo. 
 */
 
-const frutas = [
-  "manzana",
-  "pera",
-  "uva",
-  "sandía",
-  "granada",
-  "plátano",
-  "melón",
+const vehicle = [
+  {marca: "ford", modelo: "focus", tamaño: "mediano", color: "azul", año: 2022},
+  {marca: "citroen", modelo: "C4", tamaño: "grande", color: "gris", año: 2015},
+  {marca: "ferrari", modelo: "la ferrari", tamaño: "mediano", color: "rojo", año: 2024},
+  {marca: "toyota", modelo: "raptor", tamaño: "grande", color: "negro", año: 2020},
+  {marca: "fiat", modelo: "500", tamaño: "pequeño", color: "blanco", año: 2019},
 ];
+
+const taskIncompleted = [];
+
+vehicle.forEach(function (ruperto) {
+  /** ruperto es el nombre del objeto */ 
+  console.log("se está llamando",ruperto);
+
+  if (ruperto.color === "blanco") {
+    taskIncompleted.push(ruperto);
+  }
+});
+
+console.log(taskIncompleted);
+
+/*
+  4. Imagina que estás en un supermercado haciendo la compra y tienes que comprar lo que está 
+  en la variable shoppingList.
+
+  Crea una función a la que le pases dos parámetros, el array de la compra, y el elemento que has comprado
+  esa función debe buscar el elemento en el array y eliminarlo.
+
+  Por ejemplo, si le paso un array ['pepino', 'tomate', 'sandía'] y el string 'tomate', debe devolver un array ['pepino', 'sandía']
+*/
+
+const shoppingList = [ "x2 leche de coco", "pimiento rojo", "pimiento verde", "x6 garrafas de agua", 
+  "aguacates", "avena", "tomate frito", "pepino"];
+
+function itemBought(list, itemToRemove) {
+  const indexToRemove = list.indexOf(itemToRemove);
+
+  if (indexToRemove > -1) {
+    list.splice(indexToRemove, 1);
+  }
+}
+
+itemBought(shoppingList, "pepino");
+console.log(shoppingList);
+
+/*
+  Repite el ejercicio anterior sin modificar el array que le pasas como parámetro a la función.
+  Si ya has hecho el ejercicio anterior sin modificar el array, hazlo modificándolo.
+*/
+
+const shoppingList = [ "x2 leche de coco", "pimiento rojo", "pimiento verde", "x6 garrafas de agua",
+  "aguacates", "avena", "tomate frito", "pepino"];
+
+function itemBought(list, itemToRemove) {
+  const listCopy = [...list]; // list.slice()
+  const indexToRemove = listCopy.indexOf(itemToRemove);
+
+  if (indexToRemove > -1) {
+    listCopy.splice(indexToRemove, 1);
+  }
+
+  return listCopy;
+}
+
+const arrayReturned = itemBought(shoppingList, "pepino");
+console.log("returned", arrayReturned);
+console.log("original", shoppingList);
+
+/*
+ 5. Dado el listado de frutas que ponemos a continuación, recórrelo y crea otro array de igual 
+ longitud donde en cada elemento, aparezca el nombre de la fruta y si crece o no en un árbol.
+  - Las que crecen en los árboles son las manzanas, las peras, las granadas y los plátanos.
+*/
+
+const frutas = ["manzana", "pera", "uva", "sandía", "granada", "plátano", "melón"];
+
 const frutasConInfo = [];
 const crecenEnArbol = ["manzana", "pera", "granada", "plátano"];
 
@@ -220,8 +164,27 @@ frutas.forEach(function (fruta) {
 
 console.log(frutasConInfo);
 
+/*
+  6. Dado el siguiente carrito de la compra, calcular el precio total y mostrarlo por pantalla con console.log
+*/
+
+const shoppingCart = [
+  { product: "Red wine", price: 20, quantity: 1 },
+  { product: "water", price: 1, quantity: 2 },
+  { product: "Pizza carbonara", price: 10, quantity: 3 },
+  { product: "Tiramisú", price: 5.99, quantity: 2 },
+];
+
+let totalPriceProducts = 0;
+
+shoppingCart.forEach(function (item) {
+  totalPriceProducts += item.price * item.quantity;
+});
+
+console.log(totalPriceProducts);
+
 /* 
-   4. Dado el carrito de la compra del ejercicio 1, transforma ese array en otro que contenga además los impuestos. 
+   Dado el carrito de la compra del ejercicio anterior, transforma ese array en otro que contenga además los impuestos. 
    Por ejemplo, el primer elemento será:
 	  { product: 'Red wine', price: 20, quantity: 1, taxes: 2 }
 
@@ -229,23 +192,6 @@ console.log(frutasConInfo);
 
    PD: La idea es que recorras el array original y lo transformes en otro con esa propiedad.
 */
-
-const shoppingCart = [
-  { product: "Red wine", price: 20, quantity: 1, taxes: 2 },
-  { product: "water", price: 1, quantity: 2, taxes: 1 },
-  { product: "Pizza carbonara", price: 10, quantity: 3, taxes: 3 },
-  { product: "Tiramisú", price: 5.99, quantity: 2, taxes: 2 },
-];
-
-let totalPriceProducts = 0;
-
-shoppingCart.forEach(function (item) {
-  totalPriceProducts += (item.price * item.quantity * 2) / 100;
-});
-
-console.log(totalPriceProducts);
-
-/**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 const shoppingCart = [
   { product: "Red wine", price: 20, quantity: 1 },
@@ -267,7 +213,7 @@ shoppingCart.forEach(function (item) {
 console.log(shoppingCartWithTaxes);
 
 /*
-   5. Dado el carrito de la compra del ejercicio 1, implementa una función que permita 
+   7. Dado el carrito de la compra, implementa una función que permita 
    eliminar una unidad de producto del carrito de la compra basándose 
    en el nombre del producto. Por ejemplo, si la función se invoca con "Red wine", 
    el array debe eliminar ese elemento de la lista porque solo hay 1, pero si se invoca con
@@ -298,46 +244,17 @@ removeProduct("Red wine");
 
 console.log(shoppingCart);
 
-/*una función que se llame filterArray y que sirva para filtrar cualquier array en base a unas condiciones que, a priori no sabemos.
-
-Lo que tiene que hacer esa función es recorrer el array que queramos filtrar, y para cada elemento comprobar si devuelve las condiciones. 
-Si es así, el elemento se guardará en otro array que solo tendrá los elementos filtrados.
-
-Después de recorrer la función, devolveremos el array filtrado. 
 
 
-La función aceptará dos parámetros:
-El primero será el array que queramos filtrar
-El segundo será una función que se llamará para cada elemento del array a filtrar y que debe devolver true o false . 
-Esta segunda función aceptará a su vez dos parámetros: el elemento del array (aka ruperto) y el índice que ocupa.*/
-
-function filterArray(array, filterFunction) {
-  const filteredArray = [];
-  
-  array.forEach(function (arrayItem, index) {
-    if (filterFunction(arrayItem, index)) {
-      filteredArray.push(arrayItem);
-    }
-  });
-
-  return filteredArray;
-}
-
-const tasks = [
-  { text: "hacer deberes", isCompleted: true },
-  { text: "hacer funcion dentro de funcion", isCompleted: false },
-];
-
-function isTaskCompleted(task, index) {
-  console.log("Comprobando tarea con índice", index);
-
-  return task.isCompleted;
-}
-
-const completedTasks = filterArray(tasks, isTaskCompleted);/*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
-console.log(completedTasks);
 
 
+
+
+
+
+
+/*TIPOS DE ARRAYS  .filter    .map    .find   .some   .every*/
+/*Diferentes tipos de arrays aplicadas al arbol*/
 
 /*Indica las frutas que crecen en el arbol*/
 
@@ -406,7 +323,20 @@ const fruitFound = fruitsComplete.find(function (fruitInfo) {
 
 console.log(fruitFound);
 
-/*wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]*/
+
+
+
+
+
+
+
+
+/*FUNCIONES MÁS COMPLEJAS */
+/* hello    stringToArray   nameToInitials    golfOpenOrSenior    friends   numeroMenorMayor    smile   stringHighOrLow   
+funcionGenerica*/
+
+
+/* 1. wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]*/
 
 function wave(str) {
   const result = [];
@@ -442,7 +372,129 @@ function wave(str) {
 
 return wave("hello");
 
-/*Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+/* 2. Write a function to split a string and convert it into an array of words.
+
+Examples (Input ==> Output):
+"Robin Singh" ==> ["Robin", "Singh"]
+
+"I love arrays they are my favorite" ==> ["I", "love", "arrays", "they"*/
+
+function stringToArray(string){
+  return string.split (' '); 
+
+}
+
+console.log(stringToArray('Robin Singh'));
+
+/* 3. Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+The output should be two capital letters with a dot separating them.
+It should look like this:Sam Harris => S.H , patrick feeney => P.F*/
+
+function abbrevName(name){
+
+  const initials = [];
+  const deStringAArray = name.split(' ');
+
+  deStringAArray.forEach(function(word){
+    const firstLetter = word[0].toUpperCase();
+    initials.push(firstLetter);
+  })
+
+  return initials.join('.');
+
+}
+
+console.log (abbrevName('Sam Harris'));
+
+/* 4. To be a senior, a member must be at least 55 years old and have a handicap greater than 7. 
+In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+
+Input
+Input will consist of a list of pairs. Each pair contains information for a single potential member. 
+Information consists of an integer for the person's age and an integer for the person's handicap.
+
+Output
+Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the 
+respective member is to be placed in the senior or open category.
+
+Example
+input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]*/
+
+function openOrSenior(data){
+
+  const result = [];
+
+  data.forEach(function([age,handicap]){
+    if (age>55 && handicap > 7){
+      result.push('Senior');
+    } else {
+      result.push('Open');
+    }
+  });
+
+  return result;
+
+}
+
+
+console.log(openOrSenior([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]));
+
+/* 5. Make a program that filters a list of strings and returns a list with only your friends name in it.
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise,
+ you can be sure he's not...
+
+Input = ["Ryan", "Kieran", "Jason", "Yous"]
+Output = ["Ryan", "Yous"]
+
+Input = ["Peter", "Stephen", "Joe"]
+Output = []*/
+
+function friend(friends){
+  
+  const result = [];
+
+friends.forEach(function(name){
+  if (name.length === 4) {
+    result.push(name);
+  }
+});
+
+  return result;
+
+}
+
+console.log(friend(["Ryan", "Kieran", "Jason", "Yous"]));
+
+/* 6. Dado un array de enteros, elimina el valor más pequeño. No modifiques el array/lista original. 
+Si hay múltiples elementos con el mismo valor, elimina el que tenga el índice más bajo. 
+Si recibes un array/lista vacío, devuelve un array/lista vacío.
+No cambies el orden de los elementos que quedan.
+
+Ejemplos:
+Entrada: [1,2,3,4,5]
+Salida: [2,3,4,5]
+
+Entrada: [5,3,2,1,4]
+Salida: [5,3,2,4]
+
+Entrada: [2,2,1,2,1]
+Salida: [2,2,2,1]*/
+
+
+function removeSmallest(numbers) {
+
+  const copyArray = [...numbers];
+  const minNumber = Math.min (...copyArray);
+  const minIndex = copyArray.indexOf(minNumber);
+  copyArray.splice(minIndex, 1);
+
+  return copyArray;
+}
+
+console.log(removeSmallest([1,2,3,4,5]));
+
+/* 7. Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
 
 Rules for a smiling face:
 
@@ -462,64 +514,27 @@ Note
 In case of an empty array return 0. You will not be tested with invalid input 
 (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.*/
 
-
-
 function countSmileys(arr) {
   
-  const totalSmiles = [0];
+  const totalSmiles = [];
 
   arr.forEach (function(smile){
-    if (smile.includes(':' || ';' && ')' || 'D')) {
-      totalSmiles.push(simle + 1);
+    if ((smile.includes(':') || smile.includes(';')) && (smile.includes('-') || smile.includes('~')) && (smile.includes(')') || smile.includes('D')) ) {
+
+      totalSmiles.push(smile);
     }
-  })
 
-  return 0;
+});
 
-}
-
-console.log (arr);
-
-/*Write a function to split a string and convert it into an array of words.
-
-Examples (Input ==> Output):
-"Robin Singh" ==> ["Robin", "Singh"]
-
-"I love arrays they are my favorite" ==> ["I", "love", "arrays", "they"*/
-
-function stringToArray(string){
-  return string.split (' '); 
+  return (totalSmiles.length);
 
 }
 
-console.log(stringToArray('Robin Singh'));
+console.log (countSmileys([":-)" , ";~D" , ":-D" , ":_D"]));
 
-/*Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
-
-The output should be two capital letters with a dot separating them.
-
-It should look like this:Sam Harris => S.H , patrick feeney => P.F*/
-
-function abbrevName(name){
-
-  const nameArray = [];
-
-  const words = name.split(' ');
-
-  words.forEach(function(word,index){
-    const initial = word[0].toUpperCase();
-    nameArray.push(initial);
-  })
-  
-  return nameArray.join('.')
-  
-}
-
-console.log(abbrevName("John Doe"));
-
-/*In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
-Examples
-highAndLow("1 2 3 4 5"); // return "5 1"*/ 
+/* 8. In this little assignment you are given a string of space separated numbers, 
+and have to return the highest and lowest number.
+Examples  highAndLow("1 2 3 4 5"); // return "5 1"*/ 
 
 function highAndLow(numbers){
   
@@ -539,9 +554,53 @@ return maxAndMinNumber;
 
 console.log(highAndLow('1 2 3 4 5'));
 
-/*This time no story, no theory. The examples below show you how to write function accum:
+/* 9. Una función que se llame filterArray y que sirva para filtrar cualquier array en base a unas condiciones que, 
+    a priori no sabemos.
 
-Examples:
-accum("abcd") -> "A-Bb-Ccc-Dddd"
-accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
-accum("cwAt") -> "C-Ww-Aaa-Tttt"*/
+Lo que tiene que hacer esa función es recorrer el array que queramos filtrar, y para cada elemento comprobar si devuelve las condiciones. 
+Si es así, el elemento se guardará en otro array que solo tendrá los elementos filtrados.
+
+Después de recorrer la función, devolveremos el array filtrado. 
+
+
+La función aceptará dos parámetros:
+El primero será el array que queramos filtrar
+El segundo será una función que se llamará para cada elemento del array a filtrar y que debe devolver true o false . 
+Esta segunda función aceptará a su vez dos parámetros: el elemento del array (aka ruperto) y el índice que ocupa.*/
+
+function filterArray(array, filterFunction) {
+  const filteredArray = [];
+  
+  array.forEach(function (arrayItem, index) {
+    if (filterFunction(arrayItem, index)) {
+      filteredArray.push(arrayItem);
+    }
+  });
+
+  return filteredArray;
+}
+
+const tasks = [
+  { text: "hacer deberes", isCompleted: true },
+  { text: "hacer funcion dentro de funcion", isCompleted: false },
+];
+
+function isTaskCompleted(task, index) {
+  console.log("Comprobando tarea con índice", index);
+
+  return task.isCompleted;
+}
+
+const completedTasks = filterArray(tasks, isTaskCompleted);/*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
+console.log(completedTasks);
+
+
+
+
+
+
+
+
+
+
+
