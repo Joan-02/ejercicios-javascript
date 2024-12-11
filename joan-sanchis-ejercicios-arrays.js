@@ -4,14 +4,6 @@
 - Funciones complejas
 */
 
-
-
-
-
-
-
-
-
 /*ARRAYS  for.Each  .push   indexOf   .includes   .splice*/
 /*Tareas y coches, listados de compra*/
 
@@ -78,18 +70,48 @@ console.log(taskIncompleted);
 */
 
 const vehicle = [
-  {marca: "ford", modelo: "focus", tamaño: "mediano", color: "azul", año: 2022},
-  {marca: "citroen", modelo: "C4", tamaño: "grande", color: "gris", año: 2015},
-  {marca: "ferrari", modelo: "la ferrari", tamaño: "mediano", color: "rojo", año: 2024},
-  {marca: "toyota", modelo: "raptor", tamaño: "grande", color: "negro", año: 2020},
-  {marca: "fiat", modelo: "500", tamaño: "pequeño", color: "blanco", año: 2019},
+  {
+    marca: "ford",
+    modelo: "focus",
+    tamaño: "mediano",
+    color: "azul",
+    año: 2022,
+  },
+  {
+    marca: "citroen",
+    modelo: "C4",
+    tamaño: "grande",
+    color: "gris",
+    año: 2015,
+  },
+  {
+    marca: "ferrari",
+    modelo: "la ferrari",
+    tamaño: "mediano",
+    color: "rojo",
+    año: 2024,
+  },
+  {
+    marca: "toyota",
+    modelo: "raptor",
+    tamaño: "grande",
+    color: "negro",
+    año: 2020,
+  },
+  {
+    marca: "fiat",
+    modelo: "500",
+    tamaño: "pequeño",
+    color: "blanco",
+    año: 2019,
+  },
 ];
 
 const taskIncompleted = [];
 
 vehicle.forEach(function (ruperto) {
-  /** ruperto es el nombre del objeto */ 
-  console.log("se está llamando",ruperto);
+  /** ruperto es el nombre del objeto */
+  console.log("se está llamando", ruperto);
 
   if (ruperto.color === "blanco") {
     taskIncompleted.push(ruperto);
@@ -108,8 +130,16 @@ console.log(taskIncompleted);
   Por ejemplo, si le paso un array ['pepino', 'tomate', 'sandía'] y el string 'tomate', debe devolver un array ['pepino', 'sandía']
 */
 
-const shoppingList = [ "x2 leche de coco", "pimiento rojo", "pimiento verde", "x6 garrafas de agua", 
-  "aguacates", "avena", "tomate frito", "pepino"];
+const shoppingList = [
+  "x2 leche de coco",
+  "pimiento rojo",
+  "pimiento verde",
+  "x6 garrafas de agua",
+  "aguacates",
+  "avena",
+  "tomate frito",
+  "pepino",
+];
 
 function itemBought(list, itemToRemove) {
   const indexToRemove = list.indexOf(itemToRemove);
@@ -127,8 +157,16 @@ console.log(shoppingList);
   Si ya has hecho el ejercicio anterior sin modificar el array, hazlo modificándolo.
 */
 
-const shoppingList = [ "x2 leche de coco", "pimiento rojo", "pimiento verde", "x6 garrafas de agua",
-  "aguacates", "avena", "tomate frito", "pepino"];
+const shoppingList = [
+  "x2 leche de coco",
+  "pimiento rojo",
+  "pimiento verde",
+  "x6 garrafas de agua",
+  "aguacates",
+  "avena",
+  "tomate frito",
+  "pepino",
+];
 
 function itemBought(list, itemToRemove) {
   const listCopy = [...list]; // list.slice()
@@ -151,7 +189,15 @@ console.log("original", shoppingList);
   - Las que crecen en los árboles son las manzanas, las peras, las granadas y los plátanos.
 */
 
-const frutas = ["manzana", "pera", "uva", "sandía", "granada", "plátano", "melón"];
+const frutas = [
+  "manzana",
+  "pera",
+  "uva",
+  "sandía",
+  "granada",
+  "plátano",
+  "melón",
+];
 
 const frutasConInfo = [];
 const crecenEnArbol = ["manzana", "pera", "granada", "plátano"];
@@ -244,43 +290,56 @@ removeProduct("Red wine");
 
 console.log(shoppingCart);
 
-
-
-
-
-
-
-
-
-
 /*TIPOS DE ARRAYS  .filter    .map    .find   .some   .every*/
 /*Diferentes tipos de arrays aplicadas al arbol*/
 
 /*Indica las frutas que crecen en el arbol*/
 
-const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+const fruits = [
+  "manzana",
+  "pera",
+  "granada",
+  "plátano",
+  "uva",
+  "melón",
+  "sandía",
+];
 const fruitsComplete = [];
 
 fruits.forEach(function (fruitName) {
   fruitsComplete.push({
     name: fruitName,
-    growInTree: fruitName === 'manzana' || fruitName === 'pera' || (fruitName === 'granada') || (fruitName === 'plátano')
+    growInTree:
+      fruitName === "manzana" ||
+      fruitName === "pera" ||
+      fruitName === "granada" ||
+      fruitName === "plátano",
   });
 });
 
 console.log(fruitsComplete);
 
-
 /*Filtra las frutas que crecen en el arbol con .filter*/
 
-
-const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+const fruits = [
+  "manzana",
+  "pera",
+  "granada",
+  "plátano",
+  "uva",
+  "melón",
+  "sandía",
+];
 const fruitsComplete = [];
 
 fruits.forEach(function (fruitName) {
   fruitsComplete.push({
     name: fruitName,
-    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+    growInTree:
+      fruitName === "manzana" ||
+      fruitName === "pera" ||
+      fruitName === "granada" ||
+      fruitName === "plátano",
   });
 });
 
@@ -289,30 +348,52 @@ const growInTreeArray = fruitsComplete.filter(function (fruitInfo) {
 });
 console.log(growInTreeArray);
 
-
 /*Crea un nuevo array con las frutas que crecen en el arbol con .map*/
 
-const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+const fruits = [
+  "manzana",
+  "pera",
+  "granada",
+  "plátano",
+  "uva",
+  "melón",
+  "sandía",
+];
 
 const fruitsComplete = fruits.map(function (fruitName) {
   return {
     name: fruitName,
-    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+    growInTree:
+      fruitName === "manzana" ||
+      fruitName === "pera" ||
+      fruitName === "granada" ||
+      fruitName === "plátano",
   };
 });
 
-console.log('array original', fruits);
-console.log('array nuevo', fruitsComplete);
-
+console.log("array original", fruits);
+console.log("array nuevo", fruitsComplete);
 
 /*Ecuentra la primera fruta que no crece en un arbol*/
 
-const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+const fruits = [
+  "manzana",
+  "pera",
+  "granada",
+  "plátano",
+  "uva",
+  "melón",
+  "sandía",
+];
 
 const fruitsComplete = fruits.map(function (fruitName) {
   return {
     name: fruitName,
-    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+    growInTree:
+      fruitName === "manzana" ||
+      fruitName === "pera" ||
+      fruitName === "granada" ||
+      fruitName === "plátano",
   };
 });
 console.log(fruitsComplete);
@@ -323,18 +404,9 @@ const fruitFound = fruitsComplete.find(function (fruitInfo) {
 
 console.log(fruitFound);
 
-
-
-
-
-
-
-
-
 /*FUNCIONES MÁS COMPLEJAS */
 /* hello    stringToArray   nameToInitials    golfOpenOrSenior    friends   numeroMenorMayor    smile   stringHighOrLow   
 funcionGenerica*/
-
 
 /* 1. wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]*/
 
@@ -379,32 +451,29 @@ Examples (Input ==> Output):
 
 "I love arrays they are my favorite" ==> ["I", "love", "arrays", "they"*/
 
-function stringToArray(string){
-  return string.split (' '); 
-
+function stringToArray(string) {
+  return string.split(" ");
 }
 
-console.log(stringToArray('Robin Singh'));
+console.log(stringToArray("Robin Singh"));
 
 /* 3. Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
 The output should be two capital letters with a dot separating them.
 It should look like this:Sam Harris => S.H , patrick feeney => P.F*/
 
-function abbrevName(name){
-
+function abbrevName(name) {
   const initials = [];
-  const deStringAArray = name.split(' ');
+  const deStringAArray = name.split(" ");
 
-  deStringAArray.forEach(function(word){
+  deStringAArray.forEach(function (word) {
     const firstLetter = word[0].toUpperCase();
     initials.push(firstLetter);
-  })
+  });
 
-  return initials.join('.');
-
+  return initials.join(".");
 }
 
-console.log (abbrevName('Sam Harris'));
+console.log(abbrevName("Sam Harris"));
 
 /* 4. To be a senior, a member must be at least 55 years old and have a handicap greater than 7. 
 In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
@@ -421,24 +490,63 @@ Example
 input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
 output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]*/
 
-function openOrSenior(data){
-
+function openOrSenior(data) {
   const result = [];
 
-  data.forEach(function([age,handicap]){
-    if (age>55 && handicap > 7){
-      result.push('Senior');
+  data.forEach(function ([age, handicap]) {
+    if (age > 55 && handicap > 7) {
+      result.push("Senior");
     } else {
-      result.push('Open');
+      result.push("Open");
     }
   });
 
   return result;
-
 }
 
+console.log(
+  openOrSenior([
+    [18, 20],
+    [45, 2],
+    [61, 12],
+    [37, 6],
+    [21, 21],
+    [78, 9],
+  ])
+);
 
-console.log(openOrSenior([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]));
+/*Opcion 2*/
+
+function openOrSenior(data) {
+  const categories = [];
+
+  data.forEach(function (memberInfo) {
+    const age = memeberInfo[0];
+    const handicap = memberInfo[1];
+
+    if (age >= 55 && handicap > 7) {
+      categories.push("Senior");
+    } else {
+      categories.push("Open");
+    }
+  });
+
+  return categories;
+}
+
+/*Opcion 3*/
+
+function openOrSenior(data) {
+  return data.map(function (memberInfo) {
+    const age = memberInfo[0];
+    const handicap = memberInfo[1];
+
+    if (age >= 55 && handicap > 7) {
+      return "Senior";
+    }
+    return "Open";
+  });
+}
 
 /* 5. Make a program that filters a list of strings and returns a list with only your friends name in it.
 If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise,
@@ -450,18 +558,16 @@ Output = ["Ryan", "Yous"]
 Input = ["Peter", "Stephen", "Joe"]
 Output = []*/
 
-function friend(friends){
-  
+function friend(friends) {
   const result = [];
 
-friends.forEach(function(name){
-  if (name.length === 4) {
-    result.push(name);
-  }
-});
+  friends.forEach(function (name) {
+    if (name.length === 4) {
+      result.push(name);
+    }
+  });
 
   return result;
-
 }
 
 console.log(friend(["Ryan", "Kieran", "Jason", "Yous"]));
@@ -481,18 +587,16 @@ Salida: [5,3,2,4]
 Entrada: [2,2,1,2,1]
 Salida: [2,2,2,1]*/
 
-
 function removeSmallest(numbers) {
-
   const copyArray = [...numbers];
-  const minNumber = Math.min (...copyArray);
+  const minNumber = Math.min(...copyArray);
   const minIndex = copyArray.indexOf(minNumber);
   copyArray.splice(minIndex, 1);
 
   return copyArray;
 }
 
-console.log(removeSmallest([1,2,3,4,5]));
+console.log(removeSmallest([1, 2, 3, 4, 5]));
 
 /* 7. Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
 
@@ -515,44 +619,120 @@ In case of an empty array return 0. You will not be tested with invalid input
 (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.*/
 
 function countSmileys(arr) {
-  
-  const totalSmiles = [];
+  let smileysNum = 0;
 
-  arr.forEach (function(smile){
-    if ((smile.includes(':') || smile.includes(';')) && (smile.includes('-') || smile.includes('~')) && (smile.includes(')') || smile.includes('D')) ) {
-
-      totalSmiles.push(smile);
+  arr.forEach(function (face) {
+    if (face.length === 2) {
+      if (
+        (face[0] === ":" || face[0] === ";") &&
+        (face[1] === ")" || face[1] === "D")
+      ) {
+        smileysNum += 1;
+      }
     }
 
-});
+    if (face.length === 3) {
+      if (
+        (face[0] === ":" || face[0] === ";") &&
+        (face[1] === "-" || face[1] === "~") &&
+        (face[2] === ")" || face[2] === "D")
+      ) {
+        smileysNum += 1;
+      }
+    }
+  });
 
-  return (totalSmiles.length);
-
+  return smileysNum;
 }
 
-console.log (countSmileys([":-)" , ";~D" , ":-D" , ":_D"]));
+console.log(countSmileys([":-)", ";~D", ":-D", ":_D"]));
+
+/*Opcion 2*/
+
+function countSmileys(arr) {
+  const validSmiles = arr.filter(function (face) {
+    if (
+      face.length === 2 &&
+      (face[0] === ":" || face[0] === ";") &&
+      (face[1] === ")" || face[1] === "D")
+    ) {
+      return true;
+    }
+
+    if (
+      face.length === 3 &&
+      (face[0] === ":" || face[0] === ";") &&
+      (face[1] === "-" || face[1] === "~") &&
+      (face[2] === ")" || face[2] === "D")
+    ) {
+      return true;
+    }
+
+    return false;
+  });
+
+  return validSmiles.length;
+}
+
+/*Función simplificada*/
+
+function countSmileys(arr) {
+  let smileysNum = 0;
+
+  arr.forEach(function (face) {
+    const hasCorrectEyes = face[0] === ":" || face[0] === ";";
+    const mouthPosition = face.length - 1;
+    const hasCorrectMouth =
+      face[mouthPosition] === ")" || face[mouthPosition] === "D";
+
+    if (face.length === 2) {
+      if (hasCorrectEyes && hasCorrectMouth) {
+        smileysNum += 1;
+      }
+    }
+
+    if (face.length === 3) {
+      if (
+        hasCorrectEyes &&
+        (face[1] === "-" || face[1] === "~") &&
+        hasCorrectMouth
+      ) {
+        smileysNum += 1;
+      }
+    }
+  });
+
+  return smileysNum;
+}
 
 /* 8. In this little assignment you are given a string of space separated numbers, 
 and have to return the highest and lowest number.
-Examples  highAndLow("1 2 3 4 5"); // return "5 1"*/ 
+Examples  highAndLow("1 2 3 4 5"); // return "5 1"*/
 
-function highAndLow(numbers){
-  
-  const maxAndMinNumber = [];
-  const separatedNumbers = numbers.split(' ');
+function highAndLow(numbers) {
+  const numbersArray = numbers.split(" ");
+  console.log(numbersArray);
 
-  separatedNumbers.forEach(function(number){
-    const maxNumber = Math.max(number);
-    maxAndMinNumber.push(maxNumber);
-    const minNumber = Math.min(number);
-    maxAndMinNumber.push(minNumber);
-  })
+  let highest = Number(numbersArray[0]);
+  let lowest = Number(numbersArray[0]);
 
-return maxAndMinNumber;
+  numbersArray.forEach(function (numberStr) {
+    console.log(typeof numberStr);
+    const number = Number(numberStr);
+    console.log(typeof number);
 
+    if (number < lowest) {
+      lowest = number;
+    }
+
+    if (number > highest) {
+      highest = number;
+    }
+  });
+  return `${highest} ${lowest}`;
 }
 
-console.log(highAndLow('1 2 3 4 5'));
+console.log(highAndLow("1 1 1 1"));
 
 /* 9. Una función que se llame filterArray y que sirva para filtrar cualquier array en base a unas condiciones que, 
     a priori no sabemos.
@@ -570,7 +750,7 @@ Esta segunda función aceptará a su vez dos parámetros: el elemento del array 
 
 function filterArray(array, filterFunction) {
   const filteredArray = [];
-  
+
   array.forEach(function (arrayItem, index) {
     if (filterFunction(arrayItem, index)) {
       filteredArray.push(arrayItem);
@@ -591,16 +771,28 @@ function isTaskCompleted(task, index) {
   return task.isCompleted;
 }
 
-const completedTasks = filterArray(tasks, isTaskCompleted);/*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
+const completedTasks = filterArray(
+  tasks,
+  isTaskCompleted
+); /*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
 console.log(completedTasks);
 
+/*Ternarios*/
 
+/** Crear una función que, dados dos parámetros, name y age:
+ * Si name y age tienen un valor devolveremos Hola me llamo [NAME] y tengo [AGE] años
+ * Si age no tiene valor pero name si devolveremos Hola me llamo [NAME]
+ * Si ninguno tiene valor devolvermos No quiero decirte mi nombre, pringao
+ */
 
+const nameAndAge = (name, age) => {
+  if (name !== undefined && age !== undefined) {
+    return `Hola me llamo ${name} y tengo ${age} años`;
+  } else if (name !== undefined && age === undefined) {
+    return `Hola me llamo ${name}`;
+  }
+  return "No quiero decirte mi nombre, pringao";
+};
+console.log(nameAndAge());
 
-
-
-
-
-
-
-
+const nameAndAge = (name, age) => {};
