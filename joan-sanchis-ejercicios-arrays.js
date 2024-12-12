@@ -778,14 +778,6 @@ const completedTasks = filterArray(
 ); /*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
 console.log(completedTasks);
 
-
-
-
-
-
-
-
-
 /*Ternarios*/
 
 /** Crear una función que, dados dos parámetros, name y age:
@@ -795,7 +787,7 @@ console.log(completedTasks);
  */
 
 const nameAndAge = (name, age) => {
-  if (name !== undefined && age !== undefined) {
+  if (name && age) {
     return `Hola me llamo ${name} y tengo ${age} años`;
   } else if (name !== undefined && age === undefined) {
     return `Hola me llamo ${name}`;
@@ -803,37 +795,43 @@ const nameAndAge = (name, age) => {
   return "No quiero decirte mi nombre, pringao";
 };
 
-console.log(nameAndAge());
+console.log(nameAndAge("sfs", 7));
 
 /*Opcion con ternarios*/
 
-const nameAndAge = (name, age) => {
-  return (name !== undefined && age !== undefined) ? `Hola me llamo ${name} y tengo ${age} años`
-  : (name !== undefined && age === undefined) ? `Hola me llamo ${name}`
-  : "No quiero decirte mi nombre, pringao"
-};
+function greetings(name, age) {
+  const normalizedName = name.trim();
+  if (age && normalizedName) {
+    return `Hola me llamo ${normalizedName} y tengo ${age} años`;
+  }
 
-console.log(nameAndAge('pepe', 67));
+  return !age && normalizedName
+    ? `Hola me llamo ${normalizedName}`
+    : "No quiero decirte mi nombre, pringao";
+}
 
 /**
- * Programa una función, que devuelva un nombre aleatorio para una variable. La función tendrá un 
+ * Programa una función, que devuelva un nombre aleatorio para una variable. La función tendrá un
  * parámetro con el número de variables que tiene que devolver. El número de variables máximo es 2
  * y el mínimo es 1.
- * 
- * Si el número es 2, la función debe devolver un array con dos cadenas de texto y si es uno, debe 
+ *
+ * Si el número es 2, la función debe devolver un array con dos cadenas de texto y si es uno, debe
  * devolver una cadena de texto (no un array, solo la cadena de texto).
- * 
+ *
  * El nombre de las variables siempre será ruperto[sufijo], sufijo será un número aleatorio
  */
 
-function randomName (numVariable){
-  if (numVariable < 1 || numVariable > 2){
+function randomName(numVariable) {
+  if (numVariable < 1 || numVariable > 2) {
     return "El número de variables debe ser 1 o 2.";
-  } 
+  }
 
-  return numVariable === 1 ? `ruperto[${Math.floor (Math.random() * 10)}]` 
-  : [`ruperto[${Math.floor (Math.random() * 10)}]`, `ruperto[${Math.floor (Math.random() * 10)}]`];
-
+  return numVariable === 1
+    ? `ruperto[${Math.floor(Math.random() * 10)}]`
+    : [
+        `ruperto[${Math.floor(Math.random() * 10)}]`,
+        `ruperto[${Math.floor(Math.random() * 10)}]`,
+      ];
 }
 
 console.log(randomName(0));
@@ -863,18 +861,99 @@ Devuelve: "No sé a quién saludar."
 Si name está vacío pero greetingType tiene valor:
 Devuelve: "No sé cómo saludar si no me dices tu nombre."*/
 
-function greetPerson (name, greetingType){
-  return (name !== undefined && greetingType === 'formal') ? `Saludos cordiales ${name}`
-  : (name !== undefined && greetingType === 'casual') ? `¡Hola, ${name}! ¿Qué tal?`
-  : (name !== undefined && greetingType !== undefined) ? `Hola, ${name}. No entiendo tu saludo.`
-  : (name === undefined && greetingType === undefined) ? `No sé a quién saludar.`
-  : (name !== undefined && greetingType === undefined) ? `Hola, ${name}. ¿Cómo estás?`
-  : `No sé cómo saludar si no me dices tu nombre.`
+function greetPerson(name, greetingType) {
+  return name !== undefined && greetingType === "formal"
+    ? `Saludos cordiales ${name}`
+    : name !== undefined && greetingType === "casual"
+    ? `¡Hola, ${name}! ¿Qué tal?`
+    : name !== undefined && greetingType !== undefined
+    ? `Hola, ${name}. No entiendo tu saludo.`
+    : name === undefined && greetingType === undefined
+    ? `No sé a quién saludar.`
+    : name !== undefined && greetingType === undefined
+    ? `Hola, ${name}. ¿Cómo estás?`
+    : `No sé cómo saludar si no me dices tu nombre.`;
 }
 
-console.log(greetPerson("Ana", "formal"));    // "Saludos cordiales, Ana."
+console.log(greetPerson("Ana", "formal")); // "Saludos cordiales, Ana."
 console.log(greetPerson("Carlos", "casual")); // "¡Hola, Carlos! ¿Qué tal?"
 console.log(greetPerson("Luis", "especial")); // "Hola, Luis. No entiendo tu saludo."
-console.log(greetPerson("Marta"));            // "Hola, Marta. ¿Cómo estás?"
-console.log(greetPerson("", "formal"));       // "No sé cómo saludar si no me dices tu nombre."
-console.log(greetPerson());                   // "No sé a quién saludar."
+console.log(greetPerson("Marta")); // "Hola, Marta. ¿Cómo estás?"
+console.log(greetPerson("", "formal")); // "No sé cómo saludar si no me dices tu nombre."
+console.log(greetPerson()); // "No sé a quién saludar."
+
+/**
+ * Escribe una función que dado un número, escriba su tabla de multiplicar en consola
+ * Por ejemplo si le digo 1 debe escribir:
+ *  1 x 1 = 1
+ *  1 x 2 = 2
+ *  .........
+ */
+
+function consolaMultiplicar(num) {
+  for (let multiplicando = 1; multiplicando <= 10; multiplicando++) {
+    console.log(`${num} x ${multiplicando} = ${num * multiplicando}`);
+  }
+}
+
+consolaMultiplicar(1);
+
+/**
+ * Haz una función que dado un número, escriba todos los números pares desde el 0 al número introducido.
+ * Por ejemplo si introduzco 6, mostrará:
+ *  0
+ *  2
+ *  4
+ *  6
+ */
+
+const numPar = (num) => {
+  for (let par = 0; par <= num; par++) {
+    if (par % 2 === 0) {
+      console.log(par);
+    }
+  }
+};
+
+numPar(6);
+
+/**
+ * Cambia la función anterior para no usar condicionales
+ */
+
+const numPar = (num) => {
+  for (let par = 0; par <= num; par += 2) {
+    console.log(par);
+  }
+};
+
+numPar(6);
+
+/** Haz una función que, dado un número, escriba una cuenta atrás de ese número en pantalla.
+ * Por ejemplo, si introduzco 3, escribirá:
+ * 3
+ * 2
+ * 1
+ * 0
+ */
+
+const cuentaAtras = (num) => {
+  for (let ruperto = num; ruperto >= 0; ruperto--) {
+    console.log(ruperto);
+  }
+};
+
+cuentaAtras(3);
+
+/**
+ * Escribe una función que acepte una letra y un número, y el programa mostrará una cadena formada
+ * por la letra repetida el número que haya introducido.
+ */
+
+const cadena = (letter) => {
+  for (let ruperto = 0; ruperto <= 5; ruperto++) {
+    console.log(letter * ruperto);
+  }
+};
+
+cadena("a");
