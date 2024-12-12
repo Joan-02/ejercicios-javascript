@@ -2,6 +2,7 @@
 - Arrays sencillas
 - Operar con arrays (.map .filter .find .some. every)
 - Funciones complejas
+- Ternarios
 */
 
 /*ARRAYS  for.Each  .push   indexOf   .includes   .splice*/
@@ -777,6 +778,14 @@ const completedTasks = filterArray(
 ); /*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
 console.log(completedTasks);
 
+
+
+
+
+
+
+
+
 /*Ternarios*/
 
 /** Crear una función que, dados dos parámetros, name y age:
@@ -793,6 +802,43 @@ const nameAndAge = (name, age) => {
   }
   return "No quiero decirte mi nombre, pringao";
 };
+
 console.log(nameAndAge());
 
-const nameAndAge = (name, age) => {};
+/*Opcion con ternarios*/
+
+const nameAndAge = (name, age) => {
+  return (name !== undefined && age !== undefined) ? `Hola me llamo ${name} y tengo ${age} años`
+  : (name !== undefined && age === undefined) ? `Hola me llamo ${name}`
+  : "No quiero decirte mi nombre, pringao"
+};
+
+console.log(nameAndAge('pepe', 67));
+
+/**
+ * Programa una función, que devuelva un nombre aleatorio para una variable. La función tendrá un 
+ * parámetro con el número de variables que tiene que devolver. El número de variables máximo es 2
+ * y el mínimo es 1.
+ * 
+ * Si el número es 2, la función debe devolver un array con dos cadenas de texto y si es uno, debe 
+ * devolver una cadena de texto (no un array, solo la cadena de texto).
+ * 
+ * El nombre de las variables siempre será ruperto[sufijo], sufijo será un número aleatorio
+ */
+
+function randomName (numVariable){
+  if (numVariable < 1 || numVariable > 2){
+    return "El número de variables debe ser 1 o 2.";
+  } 
+
+  return numVariable === 1 ? `ruperto[${Math.floor (Math.random() * 10)}]` 
+  : [`ruperto[${Math.floor (Math.random() * 10)}]`, `ruperto[${Math.floor (Math.random() * 10)}]`];
+
+}
+
+console.log(randomName(0));
+console.log(randomName(2));
+console.log(randomName(1));
+console.log(randomName(3));
+
+
