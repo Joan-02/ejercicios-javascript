@@ -841,4 +841,40 @@ console.log(randomName(2));
 console.log(randomName(1));
 console.log(randomName(3));
 
+/*Crea una función llamada greetPerson que reciba dos parámetros: name y greetingType.
 
+Si ambos parámetros tienen valor:
+
+Si greetingType es "formal", devuelve:
+"Saludos cordiales, [NAME]."
+
+Si greetingType es "casual", devuelve:
+"¡Hola, [NAME]! ¿Qué tal?"
+
+Si greetingType tiene cualquier otro valor, devuelve:
+"Hola, [NAME]. No entiendo tu saludo."
+
+Si solo name tiene valor:
+Devuelve: "Hola, [NAME]. ¿Cómo estás?"
+
+Si ningún parámetro tiene valor:
+Devuelve: "No sé a quién saludar."
+
+Si name está vacío pero greetingType tiene valor:
+Devuelve: "No sé cómo saludar si no me dices tu nombre."*/
+
+function greetPerson (name, greetingType){
+  return (name !== undefined && greetingType === 'formal') ? `Saludos cordiales ${name}`
+  : (name !== undefined && greetingType === 'casual') ? `¡Hola, ${name}! ¿Qué tal?`
+  : (name !== undefined && greetingType !== undefined) ? `Hola, ${name}. No entiendo tu saludo.`
+  : (name === undefined && greetingType === undefined) ? `No sé a quién saludar.`
+  : (name !== undefined && greetingType === undefined) ? `Hola, ${name}. ¿Cómo estás?`
+  : `No sé cómo saludar si no me dices tu nombre.`
+}
+
+console.log(greetPerson("Ana", "formal"));    // "Saludos cordiales, Ana."
+console.log(greetPerson("Carlos", "casual")); // "¡Hola, Carlos! ¿Qué tal?"
+console.log(greetPerson("Luis", "especial")); // "Hola, Luis. No entiendo tu saludo."
+console.log(greetPerson("Marta"));            // "Hola, Marta. ¿Cómo estás?"
+console.log(greetPerson("", "formal"));       // "No sé cómo saludar si no me dices tu nombre."
+console.log(greetPerson());                   // "No sé a quién saludar."
