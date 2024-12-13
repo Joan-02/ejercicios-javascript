@@ -3,6 +3,7 @@
 - Operar con arrays (.map .filter .find .some. every)
 - Funciones complejas
 - Ternarios
+- Bucles for
 */
 
 /*ARRAYS  for.Each  .push   indexOf   .includes   .splice*/
@@ -882,6 +883,15 @@ console.log(greetPerson("Marta")); // "Hola, Marta. ¿Cómo estás?"
 console.log(greetPerson("", "formal")); // "No sé cómo saludar si no me dices tu nombre."
 console.log(greetPerson()); // "No sé a quién saludar."
 
+
+
+
+
+
+
+
+/*BUCLES FOR*/
+
 /**
  * Escribe una función que dado un número, escriba su tabla de multiplicar en consola
  * Por ejemplo si le digo 1 debe escribir:
@@ -945,15 +955,70 @@ const cuentaAtras = (num) => {
 
 cuentaAtras(3);
 
+
+
+
+
+
 /**
- * Escribe una función que acepte una letra y un número, y el programa mostrará una cadena formada
- * por la letra repetida el número que haya introducido.
+ * Gutufasio está programando un carrito de la compra y está pensando en como modelar los objetos.
+ * Imagina que en el carrito de la compra hay los siguientes elementos:
+ *  7 botellas de agua - 700€
+ *  2 bolsas de palomitas: 255.5€
+ *  1 kg de azúcar: 1000€
+ *  728 panes de hamburguesa: 928€
+ *  28 kg de tofu ahumado: 2223€
+ * Escribe un array para representar esa información.
  */
 
-const cadena = (letter) => {
-  for (let ruperto = 0; ruperto <= 5; ruperto++) {
-    console.log(letter * ruperto);
-  }
-};
+shoppingCart = [
+  { product = 'botella de agua', quantity = 7, price = 700},
+  { product = 'bolsa de palomitas', quantity = 2, price = 255.5},
+  { product = 'azucar', quantity = 1, price = 1000},
+  { product = 'pan hamburguesa', quantity = 728, price = 928},
+  { product = 'tofu ahumado', quantity = 28, price = 2223},
+];
 
-cadena("a");
+/**
+ * Al carrito vamos a aplicarle los impuestos.
+ * Los impuestos dependerán del país. Gutufasio no sabe mucho de esto y lo único que sabe es que en España
+ * los impuestos son el 21%, salvo en Ceuta, Melilla y Canarias, que no hay impuestos.
+ *
+ * Además, Gutufasio es UX, así que ha decidido poner en la interfaz los impuestos de cada elemento del array
+ * por lo que necesita que en el array, cada elemento tenga, además de su precio, el impuesto.
+ *
+ * Crea una función que se llame calculateTaxes, que acepte dos parámetros de entrada:
+ * - country
+ * - state
+ * La función debe devolver un nuevo array incluyendo el precio con impuestos y el precio total para cada elemento.
+ */
+
+
+shoppingCart = [
+  { product: 'botella de agua', quantity: 7, price: 700},
+  { product: 'bolsa de palomitas', quantity: 2, price: 255.5},
+  { product: 'azucar', quantity: 1, price: 1000},
+  { product: 'pan hamburguesa', quantity: 728, price: 928},
+  { product: 'tofu ahumado', quantity: 28, price: 2223},
+];
+
+
+function calculateTaxes(country, state) {
+  if ((country === 'España') && (state !== 'Ceuta' && state !== 'Melilla' && state !== 'Canarias')){
+
+    return shoppingCart.map(function(item){
+      let totalPrice = item.quantity * item.price;
+      const taxes = totalPrice * 0.21;
+      const priceWithTaxes = taxes + totalPrice;
+  
+      return {...item, taxes, priceWithTaxes};
+    })
+  } else {
+    return shoppingCart;
+  }
+}
+
+console.log(calculateTaxes('España', 'Ceuta'));
+
+
+
