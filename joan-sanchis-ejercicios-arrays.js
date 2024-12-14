@@ -1107,7 +1107,7 @@ function applyCoupon (cupones, shoppingCart){
 
       return {...item, priceWithCupon};
     })
-  } else (totalPriceProducts(shoppingCart) >= cupones[2].minNumber)
+  } else if (totalPriceProducts(shoppingCart) >= cupones[2].minNumber)
     return shoppingCart.map (function(item){
       const cuponPrice = item.price * cupones[2].discount;
       const priceWithCupon = item.price - cuponPrice;
@@ -1116,8 +1116,33 @@ function applyCoupon (cupones, shoppingCart){
     })
   }
 
-
+console.log(applyCoupon('GUTUFACIO10', shoppingCart));
 console.log(applyCoupon('ROBUSTIO20', shoppingCart));
+console.log(applyCoupon('LOSORNITORRINCOSMOLANUNHUEVO50', shoppingCart));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
