@@ -406,6 +406,15 @@ const fruitFound = fruitsComplete.find(function (fruitInfo) {
 
 console.log(fruitFound);
 
+
+
+
+
+
+
+
+
+
 /*FUNCIONES MÁS COMPLEJAS */
 /* hello    stringToArray   nameToInitials    golfOpenOrSenior    friends   numeroMenorMayor    smile   stringHighOrLow   
 funcionGenerica*/
@@ -779,6 +788,14 @@ const completedTasks = filterArray(
 ); /*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
 console.log(completedTasks);
 
+
+
+
+
+
+
+
+
 /*Ternarios*/
 
 /** Crear una función que, dados dos parámetros, name y age:
@@ -960,6 +977,9 @@ cuentaAtras(3);
 
 
 
+
+
+
 /**
  * Gutufasio está programando un carrito de la compra y está pensando en como modelar los objetos.
  * Imagina que en el carrito de la compra hay los siguientes elementos:
@@ -1007,9 +1027,8 @@ function calculateTaxes(country, state) {
   if ((country === 'España') && (state !== 'Ceuta' && state !== 'Melilla' && state !== 'Canarias')){
 
     return shoppingCart.map(function(item){
-      let totalPrice = item.quantity * item.price;
-      const taxes = totalPrice * 0.21;
-      const priceWithTaxes = taxes + totalPrice;
+      const taxes = item.price * 0.21;
+      const priceWithTaxes = taxes + item.price;
   
       return {...item, taxes, priceWithTaxes};
     })
@@ -1018,7 +1037,89 @@ function calculateTaxes(country, state) {
   }
 }
 
-console.log(calculateTaxes('España', 'Ceuta'));
+console.log(calculateTaxes('España', 'Valencia'));
+
+/**
+ * Gutufasio quiere añadir cupones, porque total, como cobra la botella de agua a 100€, pues se lo puede permitir.
+ *
+ * Los cupones tienen 3 propiedades:
+ * - El código del cupón
+ * - El porcentage de descuento que tiene
+ * - El mínimo de dinero que tiene que costar el carrito de la compra sin impuestos, para que el cupón aplique
+ *
+ * Los cupones válidos serán:
+ *  GUTUFACIO10, ROBUSTIO20, LOSORNITORRINCOSMOLANUNHUEVO50
+ *  Los porcentajes de descuento son 10, 20 y 50 respectivamente, y las cantidades mínimas para que funcionen son
+ *  1000€, 20€ y 5000€
+ *
+ * Como ya hemos dicho, Gutufacio le gusta poner toda la información en la interfaz, y quiere poner el precio original de cada
+ * elemento y el precio después de aplicar el cupón.
+ *
+ * La función para comprobar y aplicar un cupón de descuento se llamará applyCoupon y tendrá dos parámetros:
+ *  - El cupón de descuento
+ *  - El array con el carrito de la compra
+ * La función debe devolver el nuevo carrito con el cupón aplicado si es válido
+ *
+ * Nota, el descuento se aplica sobre el precio sin impuestos. Los impuestos se calculan sobre el precio base.
+ */
+
+shoppingCart = [
+  { product: 'botella de agua', quantity: 7, price: 700},
+  { product: 'bolsa de palomitas', quantity: 2, price: 255.5},
+  { product: 'azucar', quantity: 1, price: 1000},
+  { product: 'pan hamburguesa', quantity: 728, price: 928},
+  { product: 'tofu ahumado', quantity: 28, price: 2223},
+];
+
+function totalPriceProducts(shoppingCart) {
+  let totalPrice = 0;  // Inicializar la variable que acumula el total
+
+  shoppingCart.forEach(function(item) {
+    totalPrice += item.price;  // Sumar el precio de cada producto
+  });
+
+  return totalPrice;  // Devolver el total acumulado
+}
+
+console.log("El precio total del carrito es: ", totalPriceProducts(shoppingCart));
+
+
+
+function applyCoupon (cupones, shoppingCart){
+
+  cupones = [
+    { name: 'GUTUFACIO10', discount: 0.1, minNumber: 1000 },
+    { name: 'ROBUSTIO20', discount: 0.2, minNumber: 20 },
+    { name: 'LOSORNITORRINCOSMOLANUNHUEVO50', discount: 0.5, minNumber: 5000 },
+  ]
+  
+  if (totalPriceProducts(shoppingCart) >= cupones[0].minNumber){
+    return shoppingCart.map (function(item){
+      const cuponPrice = item.price * cupones[0].discount;
+      const priceWithCupon = item.price - cuponPrice ;
+
+      return {...item, priceWithCupon};
+    })
+  } else if (totalPriceProducts(shoppingCart) >= cupones[1].minNumber){
+    return shoppingCart.map (function(item){
+      const cuponPrice = item.price * cupones[1].discount;
+      const priceWithCupon = item.price - cuponPrice;
+
+      return {...item, priceWithCupon};
+    })
+  } else (totalPriceProducts(shoppingCart) >= cupones[2].minNumber)
+    return shoppingCart.map (function(item){
+      const cuponPrice = item.price * cupones[2].discount;
+      const priceWithCupon = item.price - cuponPrice;
+
+      return {...item, priceWithCupon};
+    })
+  }
+
+
+console.log(applyCoupon('ROBUSTIO20', shoppingCart));
+
+
 
 
 
