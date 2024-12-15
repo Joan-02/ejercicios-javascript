@@ -1093,25 +1093,25 @@ function applyCoupon (cupones, shoppingCart){
     { name: 'LOSORNITORRINCOSMOLANUNHUEVO50', discount: 0.5, minNumber: 5000 },
   ]
   
-  if (totalPriceProducts(shoppingCart) >= cupones[0].minNumber){
+  if (totalPriceProducts(shoppingCart) >= cupones[2].minNumber){
     return shoppingCart.map (function(item){
-      const cuponPrice = item.price * cupones[0].discount;
+      const cuponPrice = item.price * cupones[2].discount;
       const priceWithCupon = item.price - cuponPrice ;
-
+  
       return {...item, priceWithCupon};
     })
   } else if (totalPriceProducts(shoppingCart) >= cupones[1].minNumber){
     return shoppingCart.map (function(item){
       const cuponPrice = item.price * cupones[1].discount;
       const priceWithCupon = item.price - cuponPrice;
-
+  
       return {...item, priceWithCupon};
     })
-  } else if (totalPriceProducts(shoppingCart) >= cupones[2].minNumber)
+  } else if (totalPriceProducts(shoppingCart) >= cupones[0].minNumber)
     return shoppingCart.map (function(item){
-      const cuponPrice = item.price * cupones[2].discount;
+      const cuponPrice = item.price * cupones[0].discount;
       const priceWithCupon = item.price - cuponPrice;
-
+  
       return {...item, priceWithCupon};
     })
   }
@@ -1121,13 +1121,125 @@ console.log(applyCoupon('ROBUSTIO20', shoppingCart));
 console.log(applyCoupon('LOSORNITORRINCOSMOLANUNHUEVO50', shoppingCart));
 
 
+/**
+ * Al carrito de la compra de Gutufasio le vamos a aplicar ahora los gastos de envío.
+ * Los gastos de envío dependerán del país y de la región.
+ *  Si el país es españa:
+ *      Si la región es Ceuta, Melilla o Canarias, los gastos de envío serán 2€
+ *      Si la región es otra serán de 1.5€
+ *  Si el país es Francia los gastos de envío serán 500€, porque Gutufasio odia a los franceses y no quiere enviarles nada
+ *  salvo a la región de Alsacia, que está muy bonita en navidad, así que los gastos de envío serán 5€ en ese caso.
+ *  Si el país es Andorra, los gastos de envío serán 100€, ya que no pagan impuestos pues que paguen por el envío.
+ *  En cualquier otro caso los gastos de envío serán 30€
+ */
 
 
+shoppingCart = [
+  { product: 'botella de agua', quantity: 7, price: 700},
+  { product: 'bolsa de palomitas', quantity: 2, price: 255.5},
+  { product: 'azucar', quantity: 1, price: 1000},
+  { product: 'pan hamburguesa', quantity: 728, price: 928},
+  { product: 'tofu ahumado', quantity: 28, price: 2223},
+];
 
 
+function gastosDeEnvio(country, state) {
+  if ((country === 'España') && (state === 'Ceuta' || state === 'Melilla' || state === 'Canarias')){
+
+    return shoppingCart.map(function(item){
+      const envio = 2;
+  
+      return {...item, envio};
+    })
+
+  } else if ((country === 'España') && (state !== 'Ceuta' && state !== 'Melilla' && state !== 'Canarias')){
+      return shoppingCart.map(function(item){
+      const envio = 1.5;
+  
+      return {...item, envio};
+  })
+
+  } else if ((country === 'Francia') && (state !== 'Alsacia')){
+    return shoppingCart.map(function(item){
+    const envio = 500;
+
+    return {...item, envio};
+  })
+
+  } else if ((country === 'Francia') && (state === 'Alsacia')){
+    return shoppingCart.map(function(item){
+    const envio = 5;
+
+    return {...item, envio};
+  })
+
+  } else if ((country === 'Andorra') && (state === 'Andorra')){
+    return shoppingCart.map(function(item){
+    const envio = 100;
+
+    return {...item, envio};
+  })
+
+  } else {
+    return shoppingCart.map(function(item){
+      const envio = 30;
+  
+      return {...item, envio};
+  })
+}
+}
+
+console.log(gastosDeEnvio('España', 'Valencia'));
+console.log(gastosDeEnvio('España', 'Canarias'));
+console.log(gastosDeEnvio('Francia', 'Alsacia'));
+console.log(gastosDeEnvio('Francia', 'París'));
+console.log(gastosDeEnvio('Andorra', 'Andorra'));
+console.log(gastosDeEnvio('Italia', 'Roma'));
 
 
+/**
+ * Bueno, Gutufasio se lo ha pensado mejor y si el carrito de la compra supera los 100€, los gastos de envío serán gratis
+ * salvo si el país es Francia, a los Franceses sigue cobrándoselos
+ */
 
+shoppingCart = [
+  { product: 'botella de agua', quantity: 7, price: 700 },
+  { product: 'bolsa de palomitas', quantity: 2, price: 255.5 },
+  { product: 'azucar', quantity: 1, price: 1000 },
+  { product: 'pan hamburguesa', quantity: 728, price: 928 },
+  { product: 'tofu ahumado', quantity: 28, price: 2223 },
+];
+
+function totalPriceProducts(shoppingCart) {
+  let totalPrice = 0; 
+
+  shoppingCart.forEach(function (item) {
+    totalPrice += item.price; 
+  });
+
+  return totalPrice; 
+}
+
+console.log("El precio total del carrito es: ", totalPriceProducts(shoppingCart));
+
+function gastosDeEnvio(country) {
+  if (totalPriceProducts(shoppingCart) > 100 && country !== 'Francia') {
+        return shoppingCart.map(function (item) {
+      const envio = 0;
+      return { ...item, envio };
+    });
+
+  } else if (totalPriceProducts(shoppingCart) <= 100 || country === 'Francia') {
+    
+    return shoppingCart.map(function (item) {
+      const envio = 100;
+      return { ...item, envio };
+    });
+  }
+}
+
+console.log(gastosDeEnvio('España')); 
+console.log(gastosDeEnvio('Francia'));
 
 
 
