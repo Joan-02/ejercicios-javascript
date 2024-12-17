@@ -292,6 +292,15 @@ removeProduct("Red wine");
 
 console.log(shoppingCart);
 
+
+
+
+
+
+
+
+
+
 /*TIPOS DE ARRAYS  .filter    .map    .find   .some   .every*/
 /*Diferentes tipos de arrays aplicadas al arbol*/
 
@@ -467,6 +476,96 @@ function stringToArray(string) {
 }
 
 console.log(stringToArray("Robin Singh"));
+
+/*
+Ejercicio: Filtrar números pares y convertirlos a strings
+
+Escribe una función llamada filterAndStringify que tome un array de números enteros como entrada. La función debe:
+
+Filtrar los números pares del array.
+Convertir los números pares filtrados a strings.
+Devolver un nuevo array que contenga solo los números pares en formato de string, en el mismo orden en que aparecieron 
+en el array original.
+
+Reglas:
+No debes modificar el array original.
+Si el array está vacío o no contiene números pares, la función debe devolver un array vacío.
+Ejemplos:
+
+javascript
+Copiar código
+filterAndStringify([1, 2, 3, 4, 5, 6]); // ["2", "4", "6"]
+filterAndStringify([7, 11, 15]);        // []
+filterAndStringify([0, -2, 5, 8]);      // ["0", "-2", "8"]
+filterAndStringify([]);                 // []
+*/
+
+const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+
+function filterAndStringify(numbersArray){
+
+  const numPar = [];
+
+  numbersArray.forEach (function(number) {
+    if (number % 2 === 0) {
+      numPar.push(number.toString());
+    } 
+  });
+  
+  return numPar;
+
+}
+
+console.log(filterAndStringify(numbersArray)); 
+
+/*
+Escribe una función llamada squareAndSum que:
+
+Reciba un array de números enteros como entrada.
+Eleve cada número al cuadrado (por ejemplo, 3 se convierte en 9).
+Sume todos los cuadrados.
+Devuelva la suma total de los cuadrados.
+
+Reglas:
+No debes modificar el array original.
+Si el array está vacío, la función debe devolver 0.
+*/
+
+
+const numbers = [1, 2, 3, 4, 5];
+
+function squareAndSum(numbers){
+
+  let sumTodo = 0;
+
+  numbers.forEach(function(number){
+    const numElevado = Math.pow(number, 2);
+    sumTodo += numElevado;
+  })
+
+  return sumTodo;
+}
+
+console.log(squareAndSum(numbers));
+
+
+/*OPCION 2 CON .MAP*/
+
+const numbers = [1, 2, 3, 4, 5];
+
+function squareAndSum(numbers) {
+  let sumTodo = 0;
+
+  numbers.map(function(number) {
+    const numElevado = Math.pow(number, 2);
+    sumTodo += numElevado;
+  });
+
+  return sumTodo;
+}
+
+console.log(squareAndSum(numbers)); 
 
 /* 3. Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
 The output should be two capital letters with a dot separating them.
@@ -1240,19 +1339,6 @@ function gastosDeEnvio(country) {
 
 console.log(gastosDeEnvio('España')); 
 console.log(gastosDeEnvio('Francia'));
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
