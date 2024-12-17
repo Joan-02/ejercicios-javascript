@@ -292,15 +292,6 @@ removeProduct("Red wine");
 
 console.log(shoppingCart);
 
-
-
-
-
-
-
-
-
-
 /*TIPOS DE ARRAYS  .filter    .map    .find   .some   .every*/
 /*Diferentes tipos de arrays aplicadas al arbol*/
 
@@ -415,15 +406,6 @@ const fruitFound = fruitsComplete.find(function (fruitInfo) {
 
 console.log(fruitFound);
 
-
-
-
-
-
-
-
-
-
 /*FUNCIONES MÁS COMPLEJAS */
 /* hello    stringToArray   nameToInitials    golfOpenOrSenior    friends   numeroMenorMayor    smile   stringHighOrLow   
 funcionGenerica*/
@@ -502,22 +484,19 @@ filterAndStringify([]);                 // []
 
 const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-
-function filterAndStringify(numbersArray){
-
+function filterAndStringify(numbersArray) {
   const numPar = [];
 
-  numbersArray.forEach (function(number) {
+  numbersArray.forEach(function (number) {
     if (number % 2 === 0) {
       numPar.push(number.toString());
-    } 
+    }
   });
-  
-  return numPar;
 
+  return numPar;
 }
 
-console.log(filterAndStringify(numbersArray)); 
+console.log(filterAndStringify(numbersArray));
 
 /*
 Escribe una función llamada squareAndSum que:
@@ -532,23 +511,20 @@ No debes modificar el array original.
 Si el array está vacío, la función debe devolver 0.
 */
 
-
 const numbers = [1, 2, 3, 4, 5];
 
-function squareAndSum(numbers){
-
+function squareAndSum(numbers) {
   let sumTodo = 0;
 
-  numbers.forEach(function(number){
+  numbers.forEach(function (number) {
     const numElevado = Math.pow(number, 2);
     sumTodo += numElevado;
-  })
+  });
 
   return sumTodo;
 }
 
 console.log(squareAndSum(numbers));
-
 
 /*OPCION 2 CON .MAP*/
 
@@ -557,7 +533,7 @@ const numbers = [1, 2, 3, 4, 5];
 function squareAndSum(numbers) {
   let sumTodo = 0;
 
-  numbers.map(function(number) {
+  numbers.map(function (number) {
     const numElevado = Math.pow(number, 2);
     sumTodo += numElevado;
   });
@@ -565,7 +541,7 @@ function squareAndSum(numbers) {
   return sumTodo;
 }
 
-console.log(squareAndSum(numbers)); 
+console.log(squareAndSum(numbers));
 
 /* 3. Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
 The output should be two capital letters with a dot separating them.
@@ -887,14 +863,6 @@ const completedTasks = filterArray(
 ); /*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
 console.log(completedTasks);
 
-
-
-
-
-
-
-
-
 /*Ternarios*/
 
 /** Crear una función que, dados dos parámetros, name y age:
@@ -999,13 +967,6 @@ console.log(greetPerson("Marta")); // "Hola, Marta. ¿Cómo estás?"
 console.log(greetPerson("", "formal")); // "No sé cómo saludar si no me dices tu nombre."
 console.log(greetPerson()); // "No sé a quién saludar."
 
-
-
-
-
-
-
-
 /*BUCLES FOR*/
 
 /**
@@ -1071,14 +1032,6 @@ const cuentaAtras = (num) => {
 
 cuentaAtras(3);
 
-
-
-
-
-
-
-
-
 /**
  * Gutufasio está programando un carrito de la compra y está pensando en como modelar los objetos.
  * Imagina que en el carrito de la compra hay los siguientes elementos:
@@ -1091,11 +1044,11 @@ cuentaAtras(3);
  */
 
 shoppingCart = [
-  { product = 'botella de agua', quantity = 7, price = 700},
-  { product = 'bolsa de palomitas', quantity = 2, price = 255.5},
-  { product = 'azucar', quantity = 1, price = 1000},
-  { product = 'pan hamburguesa', quantity = 728, price = 928},
-  { product = 'tofu ahumado', quantity = 28, price = 2223},
+  { product: "botella de agua", quantity: 7, price: 100 },
+  { product: "bolsa de palomitas", quantity: 2, price: 127.75 },
+  { product: "azucar", quantity: 1, price: 1000 },
+  { product: "pan hamburguesa", quantity: 728, price: 1.27 },
+  { product: "tofu ahumado", quantity: 28, price: 79.39 },
 ];
 
 /**
@@ -1112,31 +1065,33 @@ shoppingCart = [
  * La función debe devolver un nuevo array incluyendo el precio con impuestos y el precio total para cada elemento.
  */
 
-
 shoppingCart = [
-  { product: 'botella de agua', quantity: 7, price: 700},
-  { product: 'bolsa de palomitas', quantity: 2, price: 255.5},
-  { product: 'azucar', quantity: 1, price: 1000},
-  { product: 'pan hamburguesa', quantity: 728, price: 928},
-  { product: 'tofu ahumado', quantity: 28, price: 2223},
+  { product: "botella de agua", quantity: 7, price: 100 },
+  { product: "bolsa de palomitas", quantity: 2, price: 127.75 },
+  { product: "azucar", quantity: 1, price: 1000 },
+  { product: "pan hamburguesa", quantity: 728, price: 1.27 },
+  { product: "tofu ahumado", quantity: 28, price: 79.39 },
 ];
 
-
 function calculateTaxes(country, state) {
-  if ((country === 'España') && (state !== 'Ceuta' && state !== 'Melilla' && state !== 'Canarias')){
-
-    return shoppingCart.map(function(item){
+  if (
+    country === "España" &&
+    state !== "Ceuta" &&
+    state !== "Melilla" &&
+    state !== "Canarias"
+  ) {
+    return shoppingCart.map(function (item) {
       const taxes = item.price * 0.21;
       const priceWithTaxes = taxes + item.price;
-  
-      return {...item, taxes, priceWithTaxes};
-    })
+
+      return { ...item, taxes, priceWithTaxes };
+    });
   } else {
     return shoppingCart;
   }
 }
 
-console.log(calculateTaxes('España', 'Valencia'));
+console.log(calculateTaxes("España", "Valencia"));
 
 /**
  * Gutufasio quiere añadir cupones, porque total, como cobra la botella de agua a 100€, pues se lo puede permitir.
@@ -1163,62 +1118,61 @@ console.log(calculateTaxes('España', 'Valencia'));
  */
 
 shoppingCart = [
-  { product: 'botella de agua', quantity: 7, price: 700},
-  { product: 'bolsa de palomitas', quantity: 2, price: 255.5},
-  { product: 'azucar', quantity: 1, price: 1000},
-  { product: 'pan hamburguesa', quantity: 728, price: 928},
-  { product: 'tofu ahumado', quantity: 28, price: 2223},
+  { product: "botella de agua", quantity: 7, price: 700 },
+  { product: "bolsa de palomitas", quantity: 2, price: 255.5 },
+  { product: "azucar", quantity: 1, price: 1000 },
+  { product: "pan hamburguesa", quantity: 728, price: 928 },
+  { product: "tofu ahumado", quantity: 28, price: 2223 },
 ];
 
 function totalPriceProducts(shoppingCart) {
-  let totalPrice = 0;  // Inicializar la variable que acumula el total
+  let totalPrice = 0; // Inicializar la variable que acumula el total
 
-  shoppingCart.forEach(function(item) {
-    totalPrice += item.price;  // Sumar el precio de cada producto
+  shoppingCart.forEach(function (item) {
+    totalPrice += item.price; // Sumar el precio de cada producto
   });
 
-  return totalPrice;  // Devolver el total acumulado
+  return totalPrice; // Devolver el total acumulado
 }
 
-console.log("El precio total del carrito es: ", totalPriceProducts(shoppingCart));
+console.log(
+  "El precio total del carrito es: ",
+  totalPriceProducts(shoppingCart)
+);
 
-
-
-function applyCoupon (cupones, shoppingCart){
-
+function applyCoupon(cupones, shoppingCart) {
   cupones = [
-    { name: 'GUTUFACIO10', discount: 0.1, minNumber: 1000 },
-    { name: 'ROBUSTIO20', discount: 0.2, minNumber: 20 },
-    { name: 'LOSORNITORRINCOSMOLANUNHUEVO50', discount: 0.5, minNumber: 5000 },
-  ]
-  
-  if (totalPriceProducts(shoppingCart) >= cupones[2].minNumber){
-    return shoppingCart.map (function(item){
+    { name: "GUTUFACIO10", discount: 0.1, minNumber: 1000 },
+    { name: "ROBUSTIO20", discount: 0.2, minNumber: 20 },
+    { name: "LOSORNITORRINCOSMOLANUNHUEVO50", discount: 0.5, minNumber: 5000 },
+  ];
+
+  if (totalPriceProducts(shoppingCart) >= cupones[2].minNumber) {
+    return shoppingCart.map(function (item) {
       const cuponPrice = item.price * cupones[2].discount;
-      const priceWithCupon = item.price - cuponPrice ;
-  
-      return {...item, priceWithCupon};
-    })
-  } else if (totalPriceProducts(shoppingCart) >= cupones[1].minNumber){
-    return shoppingCart.map (function(item){
+      const priceWithCupon = item.price - cuponPrice;
+
+      return { ...item, priceWithCupon };
+    });
+  } else if (totalPriceProducts(shoppingCart) >= cupones[1].minNumber) {
+    return shoppingCart.map(function (item) {
       const cuponPrice = item.price * cupones[1].discount;
       const priceWithCupon = item.price - cuponPrice;
-  
-      return {...item, priceWithCupon};
-    })
+
+      return { ...item, priceWithCupon };
+    });
   } else if (totalPriceProducts(shoppingCart) >= cupones[0].minNumber)
-    return shoppingCart.map (function(item){
+    return shoppingCart.map(function (item) {
       const cuponPrice = item.price * cupones[0].discount;
       const priceWithCupon = item.price - cuponPrice;
-  
-      return {...item, priceWithCupon};
-    })
-  }
 
-console.log(applyCoupon('GUTUFACIO10', shoppingCart));
-console.log(applyCoupon('ROBUSTIO20', shoppingCart));
-console.log(applyCoupon('LOSORNITORRINCOSMOLANUNHUEVO50', shoppingCart));
+      return { ...item, priceWithCupon };
+    });
+}
 
+console.log(applyCoupon("GUTUFACIO10", shoppingCart));
+console.log(applyCoupon("ROBUSTIO20", shoppingCart));
+console.log(applyCoupon("LOSORNITORRINCOSMOLANUNHUEVO50", shoppingCart));
 
 /**
  * Al carrito de la compra de Gutufasio le vamos a aplicar ahora los gastos de envío.
@@ -1232,69 +1186,68 @@ console.log(applyCoupon('LOSORNITORRINCOSMOLANUNHUEVO50', shoppingCart));
  *  En cualquier otro caso los gastos de envío serán 30€
  */
 
-
 shoppingCart = [
-  { product: 'botella de agua', quantity: 7, price: 700},
-  { product: 'bolsa de palomitas', quantity: 2, price: 255.5},
-  { product: 'azucar', quantity: 1, price: 1000},
-  { product: 'pan hamburguesa', quantity: 728, price: 928},
-  { product: 'tofu ahumado', quantity: 28, price: 2223},
+  { product: "botella de agua", quantity: 7, price: 700 },
+  { product: "bolsa de palomitas", quantity: 2, price: 255.5 },
+  { product: "azucar", quantity: 1, price: 1000 },
+  { product: "pan hamburguesa", quantity: 728, price: 928 },
+  { product: "tofu ahumado", quantity: 28, price: 2223 },
 ];
 
-
 function gastosDeEnvio(country, state) {
-  if ((country === 'España') && (state === 'Ceuta' || state === 'Melilla' || state === 'Canarias')){
-
-    return shoppingCart.map(function(item){
+  if (
+    country === "España" &&
+    (state === "Ceuta" || state === "Melilla" || state === "Canarias")
+  ) {
+    return shoppingCart.map(function (item) {
       const envio = 2;
-  
-      return {...item, envio};
-    })
 
-  } else if ((country === 'España') && (state !== 'Ceuta' && state !== 'Melilla' && state !== 'Canarias')){
-      return shoppingCart.map(function(item){
+      return { ...item, envio };
+    });
+  } else if (
+    country === "España" &&
+    state !== "Ceuta" &&
+    state !== "Melilla" &&
+    state !== "Canarias"
+  ) {
+    return shoppingCart.map(function (item) {
       const envio = 1.5;
-  
-      return {...item, envio};
-  })
 
-  } else if ((country === 'Francia') && (state !== 'Alsacia')){
-    return shoppingCart.map(function(item){
-    const envio = 500;
+      return { ...item, envio };
+    });
+  } else if (country === "Francia" && state !== "Alsacia") {
+    return shoppingCart.map(function (item) {
+      const envio = 500;
 
-    return {...item, envio};
-  })
+      return { ...item, envio };
+    });
+  } else if (country === "Francia" && state === "Alsacia") {
+    return shoppingCart.map(function (item) {
+      const envio = 5;
 
-  } else if ((country === 'Francia') && (state === 'Alsacia')){
-    return shoppingCart.map(function(item){
-    const envio = 5;
+      return { ...item, envio };
+    });
+  } else if (country === "Andorra" && state === "Andorra") {
+    return shoppingCart.map(function (item) {
+      const envio = 100;
 
-    return {...item, envio};
-  })
-
-  } else if ((country === 'Andorra') && (state === 'Andorra')){
-    return shoppingCart.map(function(item){
-    const envio = 100;
-
-    return {...item, envio};
-  })
-
+      return { ...item, envio };
+    });
   } else {
-    return shoppingCart.map(function(item){
+    return shoppingCart.map(function (item) {
       const envio = 30;
-  
-      return {...item, envio};
-  })
-}
+
+      return { ...item, envio };
+    });
+  }
 }
 
-console.log(gastosDeEnvio('España', 'Valencia'));
-console.log(gastosDeEnvio('España', 'Canarias'));
-console.log(gastosDeEnvio('Francia', 'Alsacia'));
-console.log(gastosDeEnvio('Francia', 'París'));
-console.log(gastosDeEnvio('Andorra', 'Andorra'));
-console.log(gastosDeEnvio('Italia', 'Roma'));
-
+console.log(gastosDeEnvio("España", "Valencia"));
+console.log(gastosDeEnvio("España", "Canarias"));
+console.log(gastosDeEnvio("Francia", "Alsacia"));
+console.log(gastosDeEnvio("Francia", "París"));
+console.log(gastosDeEnvio("Andorra", "Andorra"));
+console.log(gastosDeEnvio("Italia", "Roma"));
 
 /**
  * Bueno, Gutufasio se lo ha pensado mejor y si el carrito de la compra supera los 100€, los gastos de envío serán gratis
@@ -1302,34 +1255,35 @@ console.log(gastosDeEnvio('Italia', 'Roma'));
  */
 
 shoppingCart = [
-  { product: 'botella de agua', quantity: 7, price: 700 },
-  { product: 'bolsa de palomitas', quantity: 2, price: 255.5 },
-  { product: 'azucar', quantity: 1, price: 1000 },
-  { product: 'pan hamburguesa', quantity: 728, price: 928 },
-  { product: 'tofu ahumado', quantity: 28, price: 2223 },
+  { product: "botella de agua", quantity: 7, price: 700 },
+  { product: "bolsa de palomitas", quantity: 2, price: 255.5 },
+  { product: "azucar", quantity: 1, price: 1000 },
+  { product: "pan hamburguesa", quantity: 728, price: 928 },
+  { product: "tofu ahumado", quantity: 28, price: 2223 },
 ];
 
 function totalPriceProducts(shoppingCart) {
-  let totalPrice = 0; 
+  let totalPrice = 0;
 
   shoppingCart.forEach(function (item) {
-    totalPrice += item.price; 
+    totalPrice += item.price;
   });
 
-  return totalPrice; 
+  return totalPrice;
 }
 
-console.log("El precio total del carrito es: ", totalPriceProducts(shoppingCart));
+console.log(
+  "El precio total del carrito es: ",
+  totalPriceProducts(shoppingCart)
+);
 
 function gastosDeEnvio(country) {
-  if (totalPriceProducts(shoppingCart) > 100 && country !== 'Francia') {
-        return shoppingCart.map(function (item) {
+  if (totalPriceProducts(shoppingCart) > 100 && country !== "Francia") {
+    return shoppingCart.map(function (item) {
       const envio = 0;
       return { ...item, envio };
     });
-
-  } else if (totalPriceProducts(shoppingCart) <= 100 || country === 'Francia') {
-    
+  } else if (totalPriceProducts(shoppingCart) <= 100 || country === "Francia") {
     return shoppingCart.map(function (item) {
       const envio = 100;
       return { ...item, envio };
@@ -1337,12 +1291,33 @@ function gastosDeEnvio(country) {
   }
 }
 
-console.log(gastosDeEnvio('España')); 
-console.log(gastosDeEnvio('Francia'));
+console.log(gastosDeEnvio("España"));
+console.log(gastosDeEnvio("Francia"));
 
+/*Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
 
+[1, 2, 3, 4, 5] --> [-1, -2, -3, -4, -5]
+[1, -2, 3, -4, 5] --> [-1, 2, -3, 4, -5]
+[] --> []
+You can assume that all values are integers. Do not mutate the input array.*/
 
+function invert(array) {
+  return array.map(function (number) {
+    return number * -1;
+  });
+}
 
+/*
+In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
 
+Example
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+*/
 
-
+function filter_list(l) {
+  return l.filter(function (e) {
+    return typeof e === "number";
+  });
+}
