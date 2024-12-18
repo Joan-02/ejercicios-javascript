@@ -1022,6 +1022,80 @@ console.log(greetPerson("Marta")); // "Hola, Marta. ¿Cómo estás?"
 console.log(greetPerson("", "formal")); // "No sé cómo saludar si no me dices tu nombre."
 console.log(greetPerson()); // "No sé a quién saludar."
 
+/*
+Ejercicio 1: Encuentra el producto más caro 
+
+Descripción: Tienes un carrito de compras representado como un array de objetos. Escribe una función llamada findMostExpensive 
+que:
+
+Devuelva el producto más caro (el que tiene el precio total más alto: price * quantity).
+Si el carrito está vacío, la función debe devolver "El carrito está vacío".
+*/
+
+const shoppingCart = [
+  { product: "Botella de agua", price: 1.5, quantity: 3 },
+  { product: "Bolsa de palomitas", price: 2, quantity: 2 },
+  { product: "Tarta", price: 10, quantity: 1 }
+];
+
+let shoppingCartAndTotalPrice = [];
+
+
+const findMostExpensive = (shoppingCart) => {
+
+  shoppingCart.forEach((item) => {
+
+    const totalPrice = item.price * item.quantity;
+    shoppingCartAndTotalPrice.push(totalPrice);
+  }) 
+
+  return shoppingCart.find((element) => {
+    let maxNumber = Math.max(...shoppingCartAndTotalPrice);
+    return maxNumber === element.price * element.quantity;
+  })
+
+}
+
+console.log (findMostExpensive(shoppingCart));
+console.log (shoppingCartAndTotalPrice);
+// Salida esperada: { product: "Tarta", price: 10, quantity: 1 }
+
+/*
+Descripción: Escribe una función llamada groupTasksByStatus que:
+
+Reciba un array de tareas.
+Devuelva un objeto con dos propiedades:
+completedTasks: Array con las tareas completadas.
+pendingTasks: Array con las tareas pendientes.
+*/
+
+const tasks = [
+  { name: "Estudiar JavaScript", completed: false },
+  { name: "Hacer la compra", completed: true },
+  { name: "Leer un libro", completed: false },
+  { name: "Limpiar la casa", completed: true }
+];
+
+const groupTasksByStatus = (tasks) => {
+
+  const taskCompleted = [];
+  const taskIncompleted = [];
+
+  tasks.forEach((task) => {
+
+    if (task.completed === true){
+      taskCompleted.push(task)
+    } else {
+      taskIncompleted.push(task);
+    }
+  })
+
+  return {taskCompleted, taskIncompleted};
+}
+
+console.log(groupTasksByStatus(tasks)); 
+console.log(taskCompleted)
+console.log(taskIncompleted)
 
 
 
