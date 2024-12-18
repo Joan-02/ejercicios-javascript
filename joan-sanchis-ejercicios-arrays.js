@@ -292,6 +292,43 @@ removeProduct("Red wine");
 
 console.log(shoppingCart);
 
+/*Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+
+[1, 2, 3, 4, 5] --> [-1, -2, -3, -4, -5]
+[1, -2, 3, -4, 5] --> [-1, 2, -3, 4, -5]
+[] --> []
+You can assume that all values are integers. Do not mutate the input array.*/
+
+function invert(array) {
+  return array.map(function (number) {
+    return number * -1;
+  });
+}
+
+/*
+In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+Example
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+*/
+
+function filter_list(l) {
+  return l.filter(function (e) {
+    return typeof e === "number";
+  });
+}
+
+
+
+
+
+
+
+
+
+
 /*TIPOS DE ARRAYS  .filter    .map    .find   .some   .every*/
 /*Diferentes tipos de arrays aplicadas al arbol*/
 
@@ -405,6 +442,15 @@ const fruitFound = fruitsComplete.find(function (fruitInfo) {
 });
 
 console.log(fruitFound);
+
+
+
+
+
+
+
+
+
 
 /*FUNCIONES MÁS COMPLEJAS */
 /* hello    stringToArray   nameToInitials    golfOpenOrSenior    friends   numeroMenorMayor    smile   stringHighOrLow   
@@ -863,6 +909,15 @@ const completedTasks = filterArray(
 ); /*Esto sirve para traducir task y isTaskCompleted a array y fitlerFunction*/
 console.log(completedTasks);
 
+
+
+
+
+
+
+
+
+
 /*Ternarios*/
 
 /** Crear una función que, dados dos parámetros, name y age:
@@ -967,6 +1022,15 @@ console.log(greetPerson("Marta")); // "Hola, Marta. ¿Cómo estás?"
 console.log(greetPerson("", "formal")); // "No sé cómo saludar si no me dices tu nombre."
 console.log(greetPerson()); // "No sé a quién saludar."
 
+
+
+
+
+
+
+
+
+
 /*BUCLES FOR*/
 
 /**
@@ -1032,292 +1096,9 @@ const cuentaAtras = (num) => {
 
 cuentaAtras(3);
 
-/**
- * Gutufasio está programando un carrito de la compra y está pensando en como modelar los objetos.
- * Imagina que en el carrito de la compra hay los siguientes elementos:
- *  7 botellas de agua - 700€
- *  2 bolsas de palomitas: 255.5€
- *  1 kg de azúcar: 1000€
- *  728 panes de hamburguesa: 928€
- *  28 kg de tofu ahumado: 2223€
- * Escribe un array para representar esa información.
- */
 
-shoppingCart = [
-  { product: "botella de agua", quantity: 7, price: 100 },
-  { product: "bolsa de palomitas", quantity: 2, price: 127.75 },
-  { product: "azucar", quantity: 1, price: 1000 },
-  { product: "pan hamburguesa", quantity: 728, price: 1.27 },
-  { product: "tofu ahumado", quantity: 28, price: 79.39 },
-];
 
-/**
- * Al carrito vamos a aplicarle los impuestos.
- * Los impuestos dependerán del país. Gutufasio no sabe mucho de esto y lo único que sabe es que en España
- * los impuestos son el 21%, salvo en Ceuta, Melilla y Canarias, que no hay impuestos.
- *
- * Además, Gutufasio es UX, así que ha decidido poner en la interfaz los impuestos de cada elemento del array
- * por lo que necesita que en el array, cada elemento tenga, además de su precio, el impuesto.
- *
- * Crea una función que se llame calculateTaxes, que acepte dos parámetros de entrada:
- * - country
- * - state
- * La función debe devolver un nuevo array incluyendo el precio con impuestos y el precio total para cada elemento.
- */
 
-shoppingCart = [
-  { product: "botella de agua", quantity: 7, price: 100 },
-  { product: "bolsa de palomitas", quantity: 2, price: 127.75 },
-  { product: "azucar", quantity: 1, price: 1000 },
-  { product: "pan hamburguesa", quantity: 728, price: 1.27 },
-  { product: "tofu ahumado", quantity: 28, price: 79.39 },
-];
 
-function calculateTaxes(country, state) {
-  if (
-    country === "España" &&
-    state !== "Ceuta" &&
-    state !== "Melilla" &&
-    state !== "Canarias"
-  ) {
-    return shoppingCart.map(function (item) {
-      const taxes = item.price * 0.21;
-      const priceWithTaxes = taxes + item.price;
 
-      return { ...item, taxes, priceWithTaxes };
-    });
-  } else {
-    return shoppingCart;
-  }
-}
 
-console.log(calculateTaxes("España", "Valencia"));
-
-/**
- * Gutufasio quiere añadir cupones, porque total, como cobra la botella de agua a 100€, pues se lo puede permitir.
- *
- * Los cupones tienen 3 propiedades:
- * - El código del cupón
- * - El porcentage de descuento que tiene
- * - El mínimo de dinero que tiene que costar el carrito de la compra sin impuestos, para que el cupón aplique
- *
- * Los cupones válidos serán:
- *  GUTUFACIO10, ROBUSTIO20, LOSORNITORRINCOSMOLANUNHUEVO50
- *  Los porcentajes de descuento son 10, 20 y 50 respectivamente, y las cantidades mínimas para que funcionen son
- *  1000€, 20€ y 5000€
- *
- * Como ya hemos dicho, Gutufacio le gusta poner toda la información en la interfaz, y quiere poner el precio original de cada
- * elemento y el precio después de aplicar el cupón.
- *
- * La función para comprobar y aplicar un cupón de descuento se llamará applyCoupon y tendrá dos parámetros:
- *  - El cupón de descuento
- *  - El array con el carrito de la compra
- * La función debe devolver el nuevo carrito con el cupón aplicado si es válido
- *
- * Nota, el descuento se aplica sobre el precio sin impuestos. Los impuestos se calculan sobre el precio base.
- */
-
-shoppingCart = [
-  { product: "botella de agua", quantity: 7, price: 700 },
-  { product: "bolsa de palomitas", quantity: 2, price: 255.5 },
-  { product: "azucar", quantity: 1, price: 1000 },
-  { product: "pan hamburguesa", quantity: 728, price: 928 },
-  { product: "tofu ahumado", quantity: 28, price: 2223 },
-];
-
-function totalPriceProducts(shoppingCart) {
-  let totalPrice = 0; // Inicializar la variable que acumula el total
-
-  shoppingCart.forEach(function (item) {
-    totalPrice += item.price; // Sumar el precio de cada producto
-  });
-
-  return totalPrice; // Devolver el total acumulado
-}
-
-console.log(
-  "El precio total del carrito es: ",
-  totalPriceProducts(shoppingCart)
-);
-
-function applyCoupon(cupones, shoppingCart) {
-  cupones = [
-    { name: "GUTUFACIO10", discount: 0.1, minNumber: 1000 },
-    { name: "ROBUSTIO20", discount: 0.2, minNumber: 20 },
-    { name: "LOSORNITORRINCOSMOLANUNHUEVO50", discount: 0.5, minNumber: 5000 },
-  ];
-
-  if (totalPriceProducts(shoppingCart) >= cupones[2].minNumber) {
-    return shoppingCart.map(function (item) {
-      const cuponPrice = item.price * cupones[2].discount;
-      const priceWithCupon = item.price - cuponPrice;
-
-      return { ...item, priceWithCupon };
-    });
-  } else if (totalPriceProducts(shoppingCart) >= cupones[1].minNumber) {
-    return shoppingCart.map(function (item) {
-      const cuponPrice = item.price * cupones[1].discount;
-      const priceWithCupon = item.price - cuponPrice;
-
-      return { ...item, priceWithCupon };
-    });
-  } else if (totalPriceProducts(shoppingCart) >= cupones[0].minNumber)
-    return shoppingCart.map(function (item) {
-      const cuponPrice = item.price * cupones[0].discount;
-      const priceWithCupon = item.price - cuponPrice;
-
-      return { ...item, priceWithCupon };
-    });
-}
-
-console.log(applyCoupon("GUTUFACIO10", shoppingCart));
-console.log(applyCoupon("ROBUSTIO20", shoppingCart));
-console.log(applyCoupon("LOSORNITORRINCOSMOLANUNHUEVO50", shoppingCart));
-
-/**
- * Al carrito de la compra de Gutufasio le vamos a aplicar ahora los gastos de envío.
- * Los gastos de envío dependerán del país y de la región.
- *  Si el país es españa:
- *      Si la región es Ceuta, Melilla o Canarias, los gastos de envío serán 2€
- *      Si la región es otra serán de 1.5€
- *  Si el país es Francia los gastos de envío serán 500€, porque Gutufasio odia a los franceses y no quiere enviarles nada
- *  salvo a la región de Alsacia, que está muy bonita en navidad, así que los gastos de envío serán 5€ en ese caso.
- *  Si el país es Andorra, los gastos de envío serán 100€, ya que no pagan impuestos pues que paguen por el envío.
- *  En cualquier otro caso los gastos de envío serán 30€
- */
-
-shoppingCart = [
-  { product: "botella de agua", quantity: 7, price: 700 },
-  { product: "bolsa de palomitas", quantity: 2, price: 255.5 },
-  { product: "azucar", quantity: 1, price: 1000 },
-  { product: "pan hamburguesa", quantity: 728, price: 928 },
-  { product: "tofu ahumado", quantity: 28, price: 2223 },
-];
-
-function gastosDeEnvio(country, state) {
-  if (
-    country === "España" &&
-    (state === "Ceuta" || state === "Melilla" || state === "Canarias")
-  ) {
-    return shoppingCart.map(function (item) {
-      const envio = 2;
-
-      return { ...item, envio };
-    });
-  } else if (
-    country === "España" &&
-    state !== "Ceuta" &&
-    state !== "Melilla" &&
-    state !== "Canarias"
-  ) {
-    return shoppingCart.map(function (item) {
-      const envio = 1.5;
-
-      return { ...item, envio };
-    });
-  } else if (country === "Francia" && state !== "Alsacia") {
-    return shoppingCart.map(function (item) {
-      const envio = 500;
-
-      return { ...item, envio };
-    });
-  } else if (country === "Francia" && state === "Alsacia") {
-    return shoppingCart.map(function (item) {
-      const envio = 5;
-
-      return { ...item, envio };
-    });
-  } else if (country === "Andorra" && state === "Andorra") {
-    return shoppingCart.map(function (item) {
-      const envio = 100;
-
-      return { ...item, envio };
-    });
-  } else {
-    return shoppingCart.map(function (item) {
-      const envio = 30;
-
-      return { ...item, envio };
-    });
-  }
-}
-
-console.log(gastosDeEnvio("España", "Valencia"));
-console.log(gastosDeEnvio("España", "Canarias"));
-console.log(gastosDeEnvio("Francia", "Alsacia"));
-console.log(gastosDeEnvio("Francia", "París"));
-console.log(gastosDeEnvio("Andorra", "Andorra"));
-console.log(gastosDeEnvio("Italia", "Roma"));
-
-/**
- * Bueno, Gutufasio se lo ha pensado mejor y si el carrito de la compra supera los 100€, los gastos de envío serán gratis
- * salvo si el país es Francia, a los Franceses sigue cobrándoselos
- */
-
-shoppingCart = [
-  { product: "botella de agua", quantity: 7, price: 700 },
-  { product: "bolsa de palomitas", quantity: 2, price: 255.5 },
-  { product: "azucar", quantity: 1, price: 1000 },
-  { product: "pan hamburguesa", quantity: 728, price: 928 },
-  { product: "tofu ahumado", quantity: 28, price: 2223 },
-];
-
-function totalPriceProducts(shoppingCart) {
-  let totalPrice = 0;
-
-  shoppingCart.forEach(function (item) {
-    totalPrice += item.price;
-  });
-
-  return totalPrice;
-}
-
-console.log(
-  "El precio total del carrito es: ",
-  totalPriceProducts(shoppingCart)
-);
-
-function gastosDeEnvio(country) {
-  if (totalPriceProducts(shoppingCart) > 100 && country !== "Francia") {
-    return shoppingCart.map(function (item) {
-      const envio = 0;
-      return { ...item, envio };
-    });
-  } else if (totalPriceProducts(shoppingCart) <= 100 || country === "Francia") {
-    return shoppingCart.map(function (item) {
-      const envio = 100;
-      return { ...item, envio };
-    });
-  }
-}
-
-console.log(gastosDeEnvio("España"));
-console.log(gastosDeEnvio("Francia"));
-
-/*Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
-
-[1, 2, 3, 4, 5] --> [-1, -2, -3, -4, -5]
-[1, -2, 3, -4, 5] --> [-1, 2, -3, 4, -5]
-[] --> []
-You can assume that all values are integers. Do not mutate the input array.*/
-
-function invert(array) {
-  return array.map(function (number) {
-    return number * -1;
-  });
-}
-
-/*
-In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
-
-Example
-filter_list([1,2,'a','b']) == [1,2]
-filter_list([1,'a','b',0,15]) == [1,0,15]
-filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
-*/
-
-function filter_list(l) {
-  return l.filter(function (e) {
-    return typeof e === "number";
-  });
-}
