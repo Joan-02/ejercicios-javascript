@@ -321,15 +321,6 @@ function filter_list(l) {
   });
 }
 
-
-
-
-
-
-
-
-
-
 /*TIPOS DE ARRAYS  .filter    .map    .find   .some   .every*/
 /*Diferentes tipos de arrays aplicadas al arbol*/
 
@@ -443,15 +434,6 @@ const fruitFound = fruitsComplete.find(function (fruitInfo) {
 });
 
 console.log(fruitFound);
-
-
-
-
-
-
-
-
-
 
 /*FUNCIONES MÁS COMPLEJAS */
 /* hello    stringToArray   nameToInitials    golfOpenOrSenior    friends   numeroMenorMayor    smile   stringHighOrLow   
@@ -942,29 +924,20 @@ N.B. You should assume that all the test input will be valid, as specified above
 */
 
 function queueTime(customers, n) {
-  
   const tills = Array(n).fill(0);
 
-   customers.forEach(function(customer){
-   const minTill = Math.min(...tills)
-   const positionTill = tills.indexOf(minTill);
-   tills[positionTill] += customer;
- })
- 
- return Math.max(...tills)
+  customers.forEach(function (customer) {
+    const minTill = Math.min(...tills);
+    const positionTill = tills.indexOf(minTill);
+    tills[positionTill] += customer;
+  });
+
+  return Math.max(...tills);
 }
 
 console.log(queueTime([5, 3, 4], 1)); // 12
 console.log(queueTime([10, 2, 3, 3], 2)); // 10
 console.log(queueTime([2, 3, 10], 2)); // 12
-
-
-
-
-
-
-
-
 
 /*Ternarios*/
 
@@ -1083,29 +1056,25 @@ Si el carrito está vacío, la función debe devolver "El carrito está vacío".
 const shoppingCart = [
   { product: "Botella de agua", price: 1.5, quantity: 3 },
   { product: "Bolsa de palomitas", price: 2, quantity: 2 },
-  { product: "Tarta", price: 10, quantity: 1 }
+  { product: "Tarta", price: 10, quantity: 1 },
 ];
 
 let shoppingCartAndTotalPrice = [];
 
-
 const findMostExpensive = (shoppingCart) => {
-
   shoppingCart.forEach((item) => {
-
     const totalPrice = item.price * item.quantity;
     shoppingCartAndTotalPrice.push(totalPrice);
-  }) 
+  });
 
   return shoppingCart.find((element) => {
     let maxNumber = Math.max(...shoppingCartAndTotalPrice);
     return maxNumber === element.price * element.quantity;
-  })
+  });
+};
 
-}
-
-console.log (findMostExpensive(shoppingCart));
-console.log (shoppingCartAndTotalPrice);
+console.log(findMostExpensive(shoppingCart));
+console.log(shoppingCartAndTotalPrice);
 // Salida esperada: { product: "Tarta", price: 10, quantity: 1 }
 
 /*
@@ -1121,37 +1090,27 @@ const tasks = [
   { name: "Estudiar JavaScript", completed: false },
   { name: "Hacer la compra", completed: true },
   { name: "Leer un libro", completed: false },
-  { name: "Limpiar la casa", completed: true }
+  { name: "Limpiar la casa", completed: true },
 ];
 
 const groupTasksByStatus = (tasks) => {
-
   const taskCompleted = [];
   const taskIncompleted = [];
 
   tasks.forEach((task) => {
-
-    if (task.completed === true){
-      taskCompleted.push(task)
+    if (task.completed === true) {
+      taskCompleted.push(task);
     } else {
       taskIncompleted.push(task);
     }
-  })
+  });
 
-  return {taskCompleted, taskIncompleted};
-}
+  return { taskCompleted, taskIncompleted };
+};
 
-console.log(groupTasksByStatus(tasks)); 
-console.log(taskCompleted)
-console.log(taskIncompleted)
-
-
-
-
-
-
-
-
+console.log(groupTasksByStatus(tasks));
+console.log(taskCompleted);
+console.log(taskIncompleted);
 
 /*BUCLES FOR*/
 
@@ -1218,14 +1177,6 @@ const cuentaAtras = (num) => {
 
 cuentaAtras(3);
 
-
-
-
-
-
-
-
-
 /**
  * Gutufacio está programando un carrito de la compra y está pensando en como modelar los objetos.
  * Imagina que en el carrito de la compra hay los siguientes elementos:
@@ -1238,30 +1189,30 @@ cuentaAtras(3);
  */
 const shoppingCart = [
   {
-    name: 'Botellas de agua',
+    name: "Botellas de agua",
     quantity: 7,
-    price: 100
+    price: 100,
   },
   {
-    name: 'Bolsa de palomitas',
+    name: "Bolsa de palomitas",
     quantity: 2,
-    price: 127.75
+    price: 127.75,
   },
   {
-    name: '1Kg azúcar',
+    name: "1Kg azúcar",
     quantity: 1,
-    price: 1000
+    price: 1000,
   },
   {
-    name: 'Pan de hamburguesa',
+    name: "Pan de hamburguesa",
     quantity: 728,
-    price: 1.27
+    price: 1.27,
   },
   {
-    name: '1kg tofu',
+    name: "1kg tofu",
     quantity: 28,
-    price: 79.39
-  }
+    price: 79.39,
+  },
 ];
 
 function getShoppingCartTotalPrice(shoppingCart) {
@@ -1273,7 +1224,7 @@ function getShoppingCartTotalPrice(shoppingCart) {
 }
 
 function isSpecialSpanishRegion(region) {
-  return ['Ceuta', 'Melilla', 'Canarias'].includes(region);
+  return ["Ceuta", "Melilla", "Canarias"].includes(region);
 }
 
 /**
@@ -1291,12 +1242,13 @@ function isSpecialSpanishRegion(region) {
  */
 
 function shoppingCartWithTaxes(country, state) {
-  const taxRate = country === 'España' && !isSpecialSpanishRegion(state) ? 0.21 : 0;
+  const taxRate =
+    country === "España" && !isSpecialSpanishRegion(state) ? 0.21 : 0;
 
   return shoppingCart.map((product) => {
     return {
       ...product,
-      taxes: taxRate * product.price
+      taxes: taxRate * product.price,
     };
   });
 }
@@ -1329,20 +1281,20 @@ function shoppingCartWithTaxes(country, state) {
 function getValidCoupon(couponCode) {
   const validCoupons = [
     {
-      code: 'GUTUFACIO10',
+      code: "GUTUFACIO10",
       discount: 0.1,
-      minAmount: 1000
+      minAmount: 1000,
     },
     {
-      code: 'ROBUSTIO20',
+      code: "ROBUSTIO20",
       discount: 0.2,
-      minAmount: 20
+      minAmount: 20,
     },
     {
-      code: 'LOSORNITORRINCOSMOLANUNHUEVO50',
+      code: "LOSORNITORRINCOSMOLANUNHUEVO50",
       discount: 0.5,
-      minAmount: 5000
-    }
+      minAmount: 5000,
+    },
   ];
 
   return validCoupons.find((coupon) => {
@@ -1354,14 +1306,17 @@ function applyCoupon(couponCode, shoppingCart) {
   const coupon = getValidCoupon(couponCode);
 
   if (!coupon) {
-    console.error('Cupón no válido');
+    console.error("Cupón no válido");
     return shoppingCart;
   }
 
   let totalPrice = getShoppingCartTotalPrice(shoppingCart);
 
   if (totalPrice < coupon.minAmount) {
-    console.error('Cupón no válido porque no has llegado al min amount', coupon.minAmount);
+    console.error(
+      "Cupón no válido porque no has llegado al min amount",
+      coupon.minAmount
+    );
     return shoppingCart;
   }
 
@@ -1369,7 +1324,7 @@ function applyCoupon(couponCode, shoppingCart) {
     const unitPriceDiscount = product.price * coupon.discount;
     return {
       ...product,
-      priceWithDiscount: product.price - unitPriceDiscount
+      priceWithDiscount: product.price - unitPriceDiscount,
     };
   });
 }
@@ -1387,8 +1342,8 @@ function applyCoupon(couponCode, shoppingCart) {
  */
 
 function calculateShippingCosts(country, state, shoppingCart) {
-  if (country === 'Francia') {
-    return state === 'Alsacia' ? 5 : 500;
+  if (country === "Francia") {
+    return state === "Alsacia" ? 5 : 500;
   }
 
   let totalPrice = getShoppingCartTotalPrice(shoppingCart);
@@ -1397,13 +1352,271 @@ function calculateShippingCosts(country, state, shoppingCart) {
     return 0;
   }
 
-  if (country === 'España') {
+  if (country === "España") {
     return isSpecialSpanishRegion(state) ? 2 : 1.5;
   }
 
-  if (country === 'Andorra') {
+  if (country === "Andorra") {
     return 100;
   }
 
   return 30;
 }
+
+const AVAILABLE_NETWORKS = [
+  "twitter",
+  "facebook",
+  "instagram",
+  "tikTok",
+  "youtube",
+];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false,
+};
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: "josmidgg",
+  facebook: undefined,
+  instagram: "gutufacio",
+  tikTok: undefined,
+  youtube: "robustio",
+};
+
+function isConnected(network) {
+  return CONNECTED_NETWORKS[network];
+}
+
+console.log("Ejercicoi1", isConnected("facebook"));
+
+/*
+ 1. Intenta deducir qué hace el código de arriba y escríbelo aquí.
+*/
+
+///Este codigo te dice si la red social que le pones esta conectada o no mediante true o false.
+
+/**
+ * 2. Crea una función que, dado el nombre de una red social, te diga cual es la cuenta del usuario
+ */
+
+const AVAILABLE_NETWORKS = [
+  "twitter",
+  "facebook",
+  "instagram",
+  "tikTok",
+  "youtube",
+];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false,
+};
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: "josmidgg",
+  facebook: undefined,
+  instagram: "gutufacio",
+  tikTok: undefined,
+  youtube: "robustio",
+};
+
+function username(socialMedia) {
+  return CONNECTED_NETWORKS_ACCOUNTS[socialMedia];
+}
+
+console.log(username("facebook"));
+
+/**
+ * 3. Crea una función que, dado un array de redes sociales, te devuelva otro array indicando la red,
+ * si está conectada y con el nombre de usuario si la red está conectada.
+ *
+ * Por ejemplo, con el array ['twitter', 'youtube'], debería devolverte un array
+ * [{ network: 'twitter', isConnected: true, username: 'josmidgg' }, { network: 'youtube', isConnected: false }]
+ */
+
+const AVAILABLE_NETWORKS = [
+  "twitter",
+  "facebook",
+  "instagram",
+  "tikTok",
+  "youtube",
+];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false,
+};
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: "josmidgg",
+  facebook: undefined,
+  instagram: "gutufacio",
+  tikTok: undefined,
+  youtube: "robustio",
+};
+
+function isConnected(network) {
+  return CONNECTED_NETWORKS[network];
+}
+
+function username(socialMedia) {
+  return CONNECTED_NETWORKS_ACCOUNTS[socialMedia];
+}
+
+function chekArray(AVAILABLE_NETWORKS) {
+  return AVAILABLE_NETWORKS.map(function (socialMedia) {
+    return {
+      network: socialMedia,
+      isConnected: isConnected(socialMedia),
+      username: username(socialMedia),
+    };
+  });
+}
+
+console.log(
+  chekArray(["twitter", "facebook", "instagram", "tikTok", "youtube"])
+);
+
+/**
+ * 4. modifica la función isConnected y la función del ejercicio 2 para que ignore mayúsculas y salga el
+ * mismo resultado si el usuario pone 'twitter' o 'tWiTter'
+ */
+
+const AVAILABLE_NETWORKS = [
+  "twitter",
+  "facebook",
+  "instagram",
+  "tikTok",
+  "youtube",
+];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false,
+};
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: "josmidgg",
+  facebook: undefined,
+  instagram: "gutufacio",
+  tikTok: undefined,
+  youtube: "robustio",
+};
+
+function isConnected(network) {
+  const networkInLowerCase = network.toLowerCase();
+
+  if (networkInLowerCase === "tiktok") {
+    return CONNECTED_NETWORKS.tikTok;
+  }
+
+  return CONNECTED_NETWORKS[networkInLowerCase];
+}
+
+function username(socialMedia) {
+  return CONNECTED_NETWORKS_ACCOUNTS[socialMedia.toLowerCase()];
+}
+
+function chekArray(AVAILABLE_NETWORKS) {
+  return AVAILABLE_NETWORKS.map(function (socialMedia) {
+    return {
+      network: socialMedia.toLowerCase(),
+      isConnected: isConnected(socialMedia),
+      username: username(socialMedia),
+    };
+  });
+}
+
+console.log(
+  chekArray(["TWitter", "facebook", "INSTAGRAM", "tikTok", "youtube"])
+);
+
+/**
+ * 5. Crea un objeto cuyas propiedades sean la red social con un nombre correcto para javascript y cuyo valor sea el nombre de la
+ * red social. Por ejemplo el valor de la propiedad tikTok sería Tik Tok
+ */
+
+const CORRECT_NETWORKS_NAME = {
+  twitter: "Twitter",
+  facebook: "Facebook",
+  instagram: "Instagram",
+  tikTok: "Tik Tok",
+  youtube: "YouTube",
+};
+
+/**
+ * 6. Crea una función que dado un array de redes sociales, te devuelva la misma información del ejercicio 3
+ * incluyendo el nombre de la red social.
+ */
+
+const AVAILABLE_NETWORKS = [
+  "twitter",
+  "facebook",
+  "instagram",
+  "tikTok",
+  "youtube",
+];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false,
+};
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: "josmidgg",
+  facebook: undefined,
+  instagram: "gutufacio",
+  tikTok: undefined,
+  youtube: "robustio",
+};
+
+const CORRECT_NETWORKS_NAME = {
+  twitter: "Twitter",
+  facebook: "Facebook",
+  instagram: "Instagram",
+  tikTok: "Tik Tok",
+  youtube: "YouTube",
+};
+
+function isConnected(network) {
+  return CONNECTED_NETWORKS[network.toLowerCase()];
+}
+
+function username(socialMedia) {
+  return CONNECTED_NETWORKS_ACCOUNTS[socialMedia.toLowerCase()];
+}
+
+function correctName(socialMedia) {
+  return CORRECT_NETWORKS_NAME[socialMedia];
+}
+
+function chekArray(AVAILABLE_NETWORKS) {
+  return AVAILABLE_NETWORKS.map(function (socialMedia) {
+    return {
+      network: socialMedia.toLowerCase(),
+      isConnected: isConnected(socialMedia),
+      username: username(socialMedia),
+      correctName: correctName(socialMedia),
+    };
+  });
+}
+
+console.log(
+  chekArray(["TWitter", "facebook", "INSTAGRAM", "tikTok", "youtube"])
+);
