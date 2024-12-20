@@ -1177,6 +1177,8 @@ const cuentaAtras = (num) => {
 
 cuentaAtras(3);
 
+
+/*EJERCICIO GUTUFACIO CARRITO DE LA COMPRA*/
 /**
  * Gutufacio está programando un carrito de la compra y está pensando en como modelar los objetos.
  * Imagina que en el carrito de la compra hay los siguientes elementos:
@@ -1393,6 +1395,8 @@ function isConnected(network) {
 
 console.log("Ejercicoi1", isConnected("facebook"));
 
+
+/* EJERCICIO REDES SOCIALES */
 /*
  1. Intenta deducir qué hace el código de arriba y escríbelo aquí.
 */
@@ -1527,7 +1531,13 @@ function isConnected(network) {
 }
 
 function username(socialMedia) {
-  return CONNECTED_NETWORKS_ACCOUNTS[socialMedia.toLowerCase()];
+  const socialMediaInLowerCase = socialMedia.toLowerCase();
+
+  if (socialMediaInLowerCase === "tiktok") {
+    return CONNECTED_NETWORKS_ACCOUNTS.tikTok;
+  }
+
+  return CONNECTED_NETWORKS_ACCOUNTS[socialMediaInLowerCase];
 }
 
 function chekArray(AVAILABLE_NETWORKS) {
@@ -1595,11 +1605,23 @@ const CORRECT_NETWORKS_NAME = {
 };
 
 function isConnected(network) {
-  return CONNECTED_NETWORKS[network.toLowerCase()];
+  const networkInLowerCase = network.toLowerCase();
+
+  if (networkInLowerCase === "tiktok") {
+    return CONNECTED_NETWORKS.tikTok;
+  }
+
+  return CONNECTED_NETWORKS[networkInLowerCase];
 }
 
 function username(socialMedia) {
-  return CONNECTED_NETWORKS_ACCOUNTS[socialMedia.toLowerCase()];
+  const socialMediaInLowerCase = socialMedia.toLowerCase();
+
+  if (socialMediaInLowerCase === "tiktok") {
+    return CONNECTED_NETWORKS_ACCOUNTS.tikTok;
+  }
+
+  return CONNECTED_NETWORKS_ACCOUNTS[socialMediaInLowerCase];
 }
 
 function correctName(socialMedia) {
