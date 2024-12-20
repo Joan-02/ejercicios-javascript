@@ -1100,7 +1100,7 @@ const groupTasksByStatus = (tasks) => {
   tasks.forEach((task) => {
     if (task.completed === true) {
       taskCompleted.push(task);
-    } else {
+    } else {ç
       taskIncompleted.push(task);
     }
   });
@@ -1642,3 +1642,9 @@ function chekArray(AVAILABLE_NETWORKS) {
 console.log(
   chekArray(["TWitter", "facebook", "INSTAGRAM", "tikTok", "youtube"])
 );
+
+/**
+ * 7. Crea una función que dado un array de redes sociales, devuelva lo mismo que la función 6 pero solo
+ * de las redes que están conectadas sin modificar la función 6.
+ */
+
