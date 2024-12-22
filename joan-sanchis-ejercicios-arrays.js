@@ -1624,7 +1624,7 @@ function username(socialMedia) {
   return CONNECTED_NETWORKS_ACCOUNTS[socialMediaInLowerCase];
 }
 
-function correctName(socialMedia) {
+function correctNetworkName(socialMedia) {
   return CORRECT_NETWORKS_NAME[socialMedia];
 }
 
@@ -1634,7 +1634,7 @@ function chekArray(AVAILABLE_NETWORKS) {
       network: socialMedia.toLowerCase(),
       isConnected: isConnected(socialMedia),
       username: username(socialMedia),
-      correctName: correctName(socialMedia),
+      correctName: correctNetworkName(socialMedia),
     };
   });
 }
@@ -1647,4 +1647,71 @@ console.log(
  * 7. Crea una función que dado un array de redes sociales, devuelva lo mismo que la función 6 pero solo
  * de las redes que están conectadas sin modificar la función 6.
  */
+
+function onlyConnectedNetworks(AVAILABLE_NETWORKS){
+
+  const allNetworks = chekArray(AVAILABLE_NETWORKS);
+
+  const filteredNetworks = allNetworks.filter(function (socialMedia){
+    return socialMedia.isConnected; ///Al escribir return socialMedia.isConnected, estás diciendo: "Incluye este objeto en el array final solo si su propiedad isConnected es true".
+  })
+
+  return filteredNetworks;
+}
+
+console.log(onlyConnectedNetworks(["TWitter", "facebook", "INSTAGRAM", "tikTok", "youtube"]));
+
+/**
+ * 8. Algunas redes sociales no te dan el nombre correcto del usuario y te dan un número muy largo como cadena
+ * de texto. Dado el siguiente objeto, modifica las funciones necesarias anteriores para que en ese caso,
+ * el nombre del usuario que devuelva sea "Usuario anónimo" en todos los casos.
+ */
+
+const CONNECTED_NETWORKS_ACCOUNTS_2 = {
+  twitter: '232424124314',
+  facebook: '123',
+  instagram: 'gutufacio',
+  tikTok: undefined,
+  youtube: 'robustio'
+};
+
+function username(...socialMedias) {
+  return socialMedias.map(socialMedia => {
+    const account = CONNECTED_NETWORKS_ACCOUNTS_2[socialMedia.toLowerCase()];
+
+    if (!isNaN(account)) {
+      return 'Usuario anónimo';
+    } else {
+      return account;
+    }
+  });
+}
+
+/*console.log(username(["twitter", "facebook", "instagram", "tikTok", "youtube"]));
+
+/**
+ 9. Crea una función a la que le vamos a pasar un único parámetro, la red social. Usando alguna de las
+ funciones que has creado anteriormente y una de las variables definidas (deduce cual), debe devolver
+ el nombre del usuario en esa red social si tenemos su información, o 'Nunca has conectado tu cuenta'
+ si no la tenemos.
+ */
+
+
+ const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: "josmidgg",
+  facebook: undefined,
+  instagram: "gutufacio",
+  tikTok: undefined,
+  youtube: "robustio",
+};
+
+function username(socialMedia) {
+  const socialMediaInLowerCase = socialMedia.toLowerCase();
+
+  if (socialMediaInLowerCase === "tiktok") {
+    return CONNECTED_NETWORKS_ACCOUNTS.tikTok;
+  }
+
+  return CONNECTED_NETWORKS_ACCOUNTS[socialMediaInLowerCase];
+}
 
