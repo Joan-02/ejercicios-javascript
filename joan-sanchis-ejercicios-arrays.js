@@ -5,6 +5,7 @@
 - Ternarios
 - Bucles for
 - Ejercicio cupones Gutufacio
+- WHAT-IT-DOES
 */
 
 /*ARRAYS  for.Each  .push   indexOf   .includes   .splice*/
@@ -1398,7 +1399,6 @@ const isConnected = (network) => {
 console.log("Ejercicoi1", isConnected("facebook"));
 
 
-/* EJERCICIO REDES SOCIALES */
 /*
  1. Intenta deducir qué hace el código de arriba y escríbelo aquí.
 */
