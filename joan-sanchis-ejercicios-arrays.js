@@ -1955,7 +1955,7 @@ const getCountdownFormatted = (params) => {
 
 console.log(getCountdownFormatted({ days: 2, hours: 5, minutes: 30, seconds: 45 }));
 
-/* Esta funcion realza una cuentra a tras formateada. Cuando les pasamos los parametros se almacenan en el objeto params
+/* Esta funcion realiza una cuentra a tras formateada. Cuando les pasamos los parametros se almacenan en el objeto params
 que se encuentra arriba de todo de la funcion. Despues la funcion getFormattedPadOrEmpty mira si el valor es undefined
 y devuelve una cadena vacia, si no lo es ejecuta la funcion zeroPad añadiendo los :. Cuando se ejecuta la funcion
 zeroPad se comprueba si el valor es mayor que 10 y se añade un 0 delante, si no se devulve el valor sin añadir nada. Por
