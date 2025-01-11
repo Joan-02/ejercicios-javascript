@@ -6,6 +6,7 @@
 - Bucles for
 - Ejercicio cupones Gutufacio
 - WHAT-IT-DOES
+- Dates
 */
 
 /*ARRAYS  for.Each  .push   indexOf   .includes   .splice*/
@@ -1991,3 +1992,148 @@ console.log(getCountdownFormatted({ days: 2, hours: 5, minutes: 30, seconds: 45 
 /**
  * 3. Añádele un parámetro para que los días vayan en horas.
  */
+
+// DATES
+
+/**
+ * 1. Crea una función que sume un número de días a una fecha.
+ */
+
+const addDaysToADate = (date, days) => {
+  const dateObj = new Date(date);
+  const dateToMs = dateObj.getTime();
+  const daysToMs = days * 24 * 60 * 60 * 1000;
+  const addingDaysToDate = dateToMs + daysToMs;
+
+  return new Date(addingDaysToDate);  
+}
+
+console.log(addDaysToADate('2024-12-31T15:21:38.207Z', 1));
+
+/**
+ * 2. Crea una función que reste un número de días a una fecha.
+ */
+
+const subtractDaysToADate = (date, days) => {
+  const dateObj = new Date(date);
+  const dateToMs = dateObj.getTime();
+  const daysToMs = days * 24 * 60 * 60 * 1000;
+  const subtractingDaysToDate = dateToMs - daysToMs;
+
+  return new Date(subtractingDaysToDate);  
+}
+
+console.log(subtractDaysToADate('2024-12-31T15:21:38.207Z', 1));
+
+/**
+ * 3. Modifica la función del ejercicio 1 para que sea más genérica y que permita sumar días, horas, minutos o segundos
+ */
+
+const addTimeToADate = (date, days, unitToSum) => {
+  const dateObj = new Date(date);
+  let timeToAdd;
+
+  if (unitToSum === 'days') {
+    timeToAdd = days * 1000 * 60 *60 * 24;
+  }
+
+  if (unitToSum === 'hours') {
+    timeToAdd = days * 1000 * 60 * 60;
+  }
+
+  if (unitToSum === 'minutes') {
+    timeToAdd = days * 1000 * 60 ;
+  }
+
+  if (unitToSum === 'seconds') {
+    timeToAdd = days * 1000 ;
+  }
+
+  const dateToMs = dateObj.getTime();
+  const addingTimeToDate = dateToMs + timeToAdd;
+
+  return new Date(addingTimeToDate);  
+}
+
+console.log(addTimeToADate('2024-12-31T15:21:38.207Z', 1, "days"));
+
+/**
+ * 4.  Modifica la función del ejercicio 2 para que sea más genérica y que permita restar días, horas, minutos o segundos
+ */
+
+const subtractTimeToADate = (date, days, unitToSum) => {
+  const dateObj = new Date(date);
+  let timeToAdd;
+
+  if (unitToSum === 'days') {
+    timeToAdd = days * 1000 * 60 *60 * 24;
+  }
+
+  if (unitToSum === 'hours') {
+    timeToAdd = days * 1000 * 60 * 60;
+  }
+
+  if (unitToSum === 'minutes') {
+    timeToAdd = days * 1000 * 60 ;
+  }
+
+  if (unitToSum === 'seconds') {
+    timeToAdd = days * 1000 ;
+  }
+
+  const dateToMs = dateObj.getTime();
+  const subtractingTimeToDate = dateToMs - timeToAdd;
+
+  return new Date(subtractingTimeToDate); 
+}
+
+console.log(subtractTimeToADate('2024-12-31T15:21:38.207Z', 1, 'hours'));
+
+/**
+ * 5. Crea una función que compruebe si una fecha está entre otras dos fechas.
+ */
+
+const isBetweenDates = (date1, date2, date3) => {
+  const date1Obj = new Date(date1);
+  const date1ToMs = date1Obj.getTime();
+
+  const date2Obj = new Date(date2);
+  const date2ToMs = date2Obj.getTime();
+
+  const date3Obj = new Date(date3);
+  const date3ToMs = date3Obj.getTime();
+
+  if (date3ToMs >= date1ToMs && date3ToMs <= date2ToMs) {
+    return 'date3 esta entre date1 y date2';
+  }
+  return 'date3 no esta entre date1 y date2'; 
+  
+}
+
+console.log(isBetweenDates('2024-12-01T15:21:38.207Z', '2024-12-03T15:21:38.207Z', '2024-12-02T15:21:38.207Z'));
+
+/**
+ * 6. Crea una función que devuelva cuánto tiempo ha pasado desde una fecha y la fecha actual en días, horas, minutos 
+ * y segundos. Por ejemplo debe devolver un string que sea, "han pasado 2 días, 4 horas, 2 minutos y 1 segundos 
+ * desde [FECHA_INTRODUCIDA]}"
+ */
+
+const calculateTimeSince = (date1, ) => {
+  const date1Obj = new Date(date1);
+
+  const now = new Date();
+
+  const msBetweenDates = date1Obj.getTime() - now.getTime();
+
+  msBetweenDates.toLocaleDateString(undefined, {
+  seconds: 'numeric',
+  hours: 'numeric',
+  days: 'numeric',
+  }) 
+
+  return `Han pasado ${msBetweenDates} minutos desde ${now}`
+}
+
+console.log(calculateTimeSince('2024-12-01T15:21:38.207Z'));
+
+
