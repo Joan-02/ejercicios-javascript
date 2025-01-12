@@ -2118,22 +2118,129 @@ console.log(isBetweenDates('2024-12-01T15:21:38.207Z', '2024-12-03T15:21:38.207Z
  * desde [FECHA_INTRODUCIDA]}"
  */
 
-const calculateTimeSince = (date1, ) => {
+const calculateTimeSince = (date1) => {
   const date1Obj = new Date(date1);
-
   const now = new Date();
+  const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
 
-  const msBetweenDates = date1Obj.getTime() - now.getTime();
-
-  msBetweenDates.toLocaleDateString(undefined, {
-  seconds: 'numeric',
-  hours: 'numeric',
-  days: 'numeric',
-  }) 
-
-  return `Han pasado ${msBetweenDates} minutos desde ${now}`
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
+  
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
+  
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
+  
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
+  
+  return `Han pasado ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos desde ${date1}`
 }
 
-console.log(calculateTimeSince('2024-12-01T15:21:38.207Z'));
+console.log(calculateTimeSince('2025-01-12T09:02:16.459Z'));
+
+/**
+ * 7. Si no lo has hecho, modifica la función anterior para que no salga la información que no sea relevante. 
+ * Por ejemplo, si solo han pasado 10 segundos, no debería decir ni los días, las horas ni los minutos.
+ */
+
+const calculateTimeSince = (date1) => {
+  const date1Obj = new Date(date1);
+  const now = new Date();
+  const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
+
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
+
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
+
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
+
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
+
+  const parts = [];
+
+  if (days > 0) {
+    parts.push(`${days} día${days > 1 ? 's' : ''}`);
+  }
+
+  if (hours > 0) {
+    parts.push(`${hours} hora${hours > 1 ? 's' : ''}`);
+  }
+
+  if (minutes > 0) {
+    parts.push(`${minutes} minuto${minutes > 1 ? 's' : ''}`);
+  }
+
+  if (seconds > 0) {
+    parts.push(`${seconds} segundo${seconds > 1 ? 's' : ''}`);
+  }
+
+  return `Han pasado ${parts.join(', ')} desde la fecha introducida.`;
+}
+
+console.log(calculateTimeSince('2025-01-12T09:02:16.459Z'));
+
+/**
+ * 8. Modifica la función anterior para que se le pueda pasar un objeto que permita desactivar los días, 
+ * las horas, los minutos o los segundos. Por ejemplo, si le paso { days: false, hours: false } la función 
+ * debe devolver solo los minutos y los segundos que han pasado.
+ */
+
+
+
+/**
+ * 10. Dado el array de ejemplo que pongo, haz una función que filtre las tareas completadas el 
+ * 9 de enero durante todo el día
+ */
+
+const tasks = [
+  {
+    text: 'Hacer la compra',
+    completed: true,
+    completedAt: '2025-01-10T15:54:40.088Z'
+  },
+  {
+    text: 'Ir a clase',
+    completed: true,
+    completedAt: '2025-01-9T15:00:40.088Z'
+  },
+  {
+    text: 'Comer a clase',
+    completed: true,
+    completedAt: '2025-01-9T14:00:40.088Z'
+  },
+  {
+    text: 'Repasar javascript',
+    completed: false
+  }
+];
+
+const completedTasks = (tasks) => {
+  const startOfDay = new Date('2025-01-09T00:00:00.000Z'); 
+  const endOfDay = new Date('2025-01-09T23:59:59.999Z');
+  const startOfDayMs = startOfDay.getTime();
+  const endOfDayMs = endOfDay.getTime();
+
+  return tasks.filter((task) => {
+    if (task.completed === true && (new Date(task.completedAt).getTime()) >= startOfDayMs 
+      && (new Date(task.completedAt).getTime()) <= endOfDayMs) {
+      return true;
+    }
+  });
+};
+
+console.log(completedTasks(tasks));
+
+
+
+
+
+
+
+
+
 
 
