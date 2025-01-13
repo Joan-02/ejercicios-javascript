@@ -2181,7 +2181,7 @@ const calculateTimeSince = (date1) => {
   return `Han pasado ${parts.join(', ')} desde la fecha introducida.`;
 }
 
-console.log(calculateTimeSince('2025-01-12T09:02:16.459Z'));
+console.log(calculateTimeSince('2024-01-05T09:02:16.459Z'));
 
 /**
  * 8. Modifica la función anterior para que se le pueda pasar un objeto que permita desactivar los días, 
@@ -2189,7 +2189,77 @@ console.log(calculateTimeSince('2025-01-12T09:02:16.459Z'));
  * debe devolver solo los minutos y los segundos que han pasado.
  */
 
+const calculateTimeSince = (date1, options = { days: true, hours: true, minutes: true, seconds: true }) => {
+  const date1Obj = new Date(date1);
+  const now = new Date();
+  const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
+  console.log("Diferencia en ms:", msBetweenDates);
 
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
+
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
+
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
+
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
+
+  console.log("Días:", days, "Horas:", hours, "Minutos:", minutes, "Segundos:", seconds);
+
+  const parts = [];
+
+  if (days > 0 && options.days) {
+    parts.push(`${days} día${days > 1 ? 's' : ''}`);
+  } 
+  
+  if (hours > 0 && options.hours) {
+    parts.push(`${hours} hora${hours > 1 ? 's' : ''}`);
+  }
+
+  if (minutes > 0 && options.minutes) {
+    parts.push(`${minutes} minuto${minutes > 1 ? 's' : ''}`);
+  }
+
+  if (seconds > 0 && options.seconds) {
+    parts.push(`${seconds} segundo${seconds > 1 ? 's' : ''}`);
+  }
+
+  return `Han pasado ${parts.join(', ')} desde la fecha introducida.`;
+}
+
+console.log(calculateTimeSince('2024-01-05T09:02:16.459Z', { days: false, hours: false }));
+
+/**
+ * 9. Crea una función como la anterior, pero que indique cuánto tiempo queda para una fecha específica.
+ */
+
+const calculateTimeSince = (date1, date2) => {
+  const date1Obj = new Date(date1);
+  const date2Obj = new Date(date2);
+
+  if (date2Obj <= date1Obj) {
+    return `La fecha ${date2} ya ha pasado.`;
+  }
+
+  const msBetweenDates = Math.abs(date1Obj.getTime() - date2Obj.getTime());
+
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
+  
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
+  
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
+  
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
+  
+  return `Quedan ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos hasta ${date2}`
+}
+
+console.log(calculateTimeSince('2025-01-12T09:02:16.459Z', '2025-01-13T09:02:16.459Z'));
 
 /**
  * 10. Dado el array de ejemplo que pongo, haz una función que filtre las tareas completadas el 
@@ -2205,12 +2275,12 @@ const tasks = [
   {
     text: 'Ir a clase',
     completed: true,
-    completedAt: '2025-01-9T15:00:40.088Z'
+    completedAt: '2025-01-09T15:00:40.088Z'
   },
   {
-    text: 'Comer a clase',
+    text: 'Comer',
     completed: true,
-    completedAt: '2025-01-9T14:00:40.088Z'
+    completedAt: '2025-01-09T14:00:40.088Z'
   },
   {
     text: 'Repasar javascript',
@@ -2233,13 +2303,6 @@ const completedTasks = (tasks) => {
 };
 
 console.log(completedTasks(tasks));
-
-
-
-
-
-
-
 
 
 
