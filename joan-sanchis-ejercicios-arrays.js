@@ -2189,7 +2189,7 @@ console.log(calculateTimeSince('2024-01-05T09:02:16.459Z'));
  * debe devolver solo los minutos y los segundos que han pasado.
  */
 
-const calculateTimeSince = (date1, options = { days: true, hours: true, minutes: true, seconds: true }) => {
+//const calculateTimeSince = (date1, options = { days: true, hours: true, minutes: true, seconds: true }) => {
   const date1Obj = new Date(date1);
   const now = new Date();
   const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
@@ -2229,7 +2229,70 @@ const calculateTimeSince = (date1, options = { days: true, hours: true, minutes:
   return `Han pasado ${parts.join(', ')} desde la fecha introducida.`;
 }
 
-console.log(calculateTimeSince('2024-01-05T09:02:16.459Z', { days: false, hours: false }));
+const SECONDS_IN_MILLISECONDS = 1000;
+const MINUTES_IN_MILLISECONDS = SECONDS_IN_MILLISECONDS * 60;
+const HOURS_IN_MILLISECONDS = MINUTES_IN_MILLISECONDS * 60;
+const DAYS_IN_MILLISECONDS = HOURS_IN_MILLISECONDS * 24;
+
+const timePassed = (fromDate, disableOutput = {}) => {
+  //Es importante predeclarar disableOutput como objeto para que tenga un valor y pueda usarse la desestructuración del objeto. En caso contrario, cuando no pasáramos ningún parametro en su lugar sería undefined y no nos permitiría aplicar sobre él la desestructuración.
+
+  if (fromDate > new Date()) {
+    return 'Esa fecha no ha llegado aún.';
+  }
+
+  const { days = true, hours = true, minutes = true, seconds = true } = disableOutput;
+
+  const timeBetweenThenAndNow = Date.now() - fromDate.getTime();
+
+  const day = days ? Math.floor(timeBetweenThenAndNow / DAYS_IN_MILLISECONDS) : 0;
+  let leftTime = days ? timeBetweenThenAndNow % DAYS_IN_MILLISECONDS : timeBetweenThenAndNow;
+
+  const hour = hours ? Math.floor(leftTime / HOURS_IN_MILLISECONDS) : 0;
+  leftTime = hours ? leftTime % HOURS_IN_MILLISECONDS : leftTime;
+
+  const min = minutes ? Math.floor(leftTime / MINUTES_IN_MILLISECONDS) : 0;
+  leftTime = minutes ? leftTime % HOURS_IN_MILLISECONDS : leftTime;
+
+  const sec = seconds ? Math.floor(leftTime / SECONDS_IN_MILLISECONDS) : 0;
+
+  const dayText = days && timeBetweenThenAndNow >= DAYS_IN_MILLISECONDS ? ` ${day} días,` : '';
+  const hourText = hours && timeBetweenThenAndNow >= HOURS_IN_MILLISECONDS ? ` ${hour} horas,` : '';
+  const minText = minutes && timeBetweenThenAndNow >= MINUTES_IN_MILLISECONDS ? ` ${min} minutos` : '';
+  const secText = seconds && timeBetweenThenAndNow >= 1000 ? ` ${sec} segundos` : '';
+
+  const connectSentence = minText && secText ? ' y' : '';
+
+  const sameTime = timeBetweenThenAndNow === 0 ? ' nada, estás comparando las mismas horas' : '';
+
+  return `Desde ${fromDate.toLocaleString()} hasta ahora, han pasado:${days ? dayText : ''}${hours ? hourText : ''}${
+    minutes ? minText : ''
+  }${seconds ? connectSentence : ''}${seconds ? secText : ''}${sameTime}.`;
+};
+
+console.log('normal', timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS)));
+console.log('sin dias', timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false }));
+console.log(
+  'sin dias ni minutos',
+  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false, hours: false })
+);
+console.log(
+  'solo segundos',
+  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false, hours: false, minutes: false })
+);
+console.log(
+  'sin nada',
+  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false, hours: false, minutes: false, seconds: false })
+);
+console.log(
+  'con dias y minutos',
+  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS - 80000), {
+    days: true,
+    hours: false,
+    minutes: true,
+    seconds: false
+  })
+);
 
 /**
  * 9. Crea una función como la anterior, pero que indique cuánto tiempo queda para una fecha específica.
