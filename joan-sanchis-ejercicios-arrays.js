@@ -1102,7 +1102,8 @@ const groupTasksByStatus = (tasks) => {
   tasks.forEach((task) => {
     if (task.completed === true) {
       taskCompleted.push(task);
-    } else {ç
+    } else {
+      ç;
       taskIncompleted.push(task);
     }
   });
@@ -1178,7 +1179,6 @@ const cuentaAtras = (num) => {
 };
 
 cuentaAtras(3);
-
 
 /*EJERCICIO GUTUFACIO CARRITO DE LA COMPRA*/
 /**
@@ -1395,10 +1395,9 @@ const CONNECTED_NETWORKS_ACCOUNTS = {
 
 const isConnected = (network) => {
   return CONNECTED_NETWORKS[network];
-}
+};
 
 console.log("Ejercicoi1", isConnected("facebook"));
-
 
 /*
  1. Intenta deducir qué hace el código de arriba y escríbelo aquí.
@@ -1436,7 +1435,7 @@ const CONNECTED_NETWORKS_ACCOUNTS = {
 
 const username = (socialMedia) => {
   return CONNECTED_NETWORKS_ACCOUNTS[socialMedia];
-}
+};
 
 console.log(username("facebook"));
 
@@ -1474,17 +1473,17 @@ const CONNECTED_NETWORKS_ACCOUNTS = {
 
 const isConnected = (network) => {
   return CONNECTED_NETWORKS[network];
-}
+};
 
 const username = (socialMedia) => {
   return CONNECTED_NETWORKS_ACCOUNTS[socialMedia];
-}
+};
 
-const chekArray = (AVAILABLE_NETWORKS) => 
-  AVAILABLE_NETWORKS.map(socialMedia => ({
-      network: socialMedia.toLowerCase(),
-      isConnected: isConnected(socialMedia),
-      username: username(socialMedia),
+const chekArray = (AVAILABLE_NETWORKS) =>
+  AVAILABLE_NETWORKS.map((socialMedia) => ({
+    network: socialMedia.toLowerCase(),
+    isConnected: isConnected(socialMedia),
+    username: username(socialMedia),
   }));
 
 console.log(
@@ -1528,7 +1527,7 @@ const isConnected = (network) => {
   }
 
   return CONNECTED_NETWORKS[networkInLowerCase];
-}
+};
 
 const username = (socialMedia) => {
   const socialMediaInLowerCase = socialMedia.toLowerCase();
@@ -1538,13 +1537,13 @@ const username = (socialMedia) => {
   }
 
   return CONNECTED_NETWORKS_ACCOUNTS[socialMediaInLowerCase];
-}
+};
 
-const chekArray = (AVAILABLE_NETWORKS) => 
-  AVAILABLE_NETWORKS.map(socialMedia => ({
-      network: socialMedia.toLowerCase(),
-      isConnected: isConnected(socialMedia),
-      username: username(socialMedia),
+const chekArray = (AVAILABLE_NETWORKS) =>
+  AVAILABLE_NETWORKS.map((socialMedia) => ({
+    network: socialMedia.toLowerCase(),
+    isConnected: isConnected(socialMedia),
+    username: username(socialMedia),
   }));
 
 console.log(
@@ -1604,12 +1603,13 @@ const CORRECT_NETWORKS_NAME = {
 const isConnected = (network) => {
   const networkInLowerCase = network.toLowerCase();
 
-  const isNetworkConnected = networkInLowerCase === "tiktok" 
-  ? CONNECTED_NETWORKS.tikTok 
-  : CONNECTED_NETWORKS[networkInLowerCase];
+  const isNetworkConnected =
+    networkInLowerCase === "tiktok"
+      ? CONNECTED_NETWORKS.tikTok
+      : CONNECTED_NETWORKS[networkInLowerCase];
 
-  return isNetworkConnected
-}
+  return isNetworkConnected;
+};
 
 const username = (socialMedia) => {
   const socialMediaInLowerCase = socialMedia.toLowerCase();
@@ -1619,18 +1619,18 @@ const username = (socialMedia) => {
   }
 
   return CONNECTED_NETWORKS_ACCOUNTS[socialMediaInLowerCase];
-}
+};
 
 const correctNetworkName = (socialMedia) => {
   return CORRECT_NETWORKS_NAME[socialMedia];
-}
+};
 
 const chekArray = (AVAILABLE_NETWORKS) =>
-  AVAILABLE_NETWORKS.map(socialMedia => ({
-      network: socialMedia.toLowerCase(),
-      isConnected: isConnected(socialMedia),
-      username: username(socialMedia),
-      correctName: correctNetworkName(socialMedia),
+  AVAILABLE_NETWORKS.map((socialMedia) => ({
+    network: socialMedia.toLowerCase(),
+    isConnected: isConnected(socialMedia),
+    username: username(socialMedia),
+    correctName: correctNetworkName(socialMedia),
   }));
 
 console.log(
@@ -1643,11 +1643,20 @@ console.log(
  */
 
 const onlyConnectedNetworks = (AVAILABLE_NETWORKS) => {
+  chekArray(AVAILABLE_NETWORKS).filter(
+    (socialMedia) => socialMedia.isConnected
+  ); ///Al escribir return socialMedia.isConnected, estás diciendo: "Incluye este objeto en el array final solo si su propiedad isConnected es true".
+};
 
-  chekArray(AVAILABLE_NETWORKS).filter(socialMedia => socialMedia.isConnected); ///Al escribir return socialMedia.isConnected, estás diciendo: "Incluye este objeto en el array final solo si su propiedad isConnected es true".
-  }
-
-console.log(onlyConnectedNetworks(["TWitter", "facebook", "INSTAGRAM", "tikTok", "youtube"]));
+console.log(
+  onlyConnectedNetworks([
+    "TWitter",
+    "facebook",
+    "INSTAGRAM",
+    "tikTok",
+    "youtube",
+  ])
+);
 
 /**
  * 8. Algunas redes sociales no te dan el nombre correcto del usuario y te dan un número muy largo como cadena
@@ -1656,24 +1665,24 @@ console.log(onlyConnectedNetworks(["TWitter", "facebook", "INSTAGRAM", "tikTok",
  */
 
 const CONNECTED_NETWORKS_ACCOUNTS_2 = {
-  twitter: '232424124314',
+  twitter: "232424124314",
   facebook: undefined,
-  instagram: 'gutufacio',
+  instagram: "gutufacio",
   tikTok: undefined,
-  youtube: 'robustio'
+  youtube: "robustio",
 };
 
 const username = (...socialMedias) => {
-  return socialMedias.map(socialMedia => {
+  return socialMedias.map((socialMedia) => {
     const account = CONNECTED_NETWORKS_ACCOUNTS_2[socialMedia.toLowerCase()];
 
     if (!isNaN(account)) {
-      return 'Usuario anónimo';
+      return "Usuario anónimo";
     } else {
       return account;
     }
   });
-}
+};
 
 console.log(username("twitter", "facebook", "instagram", "tikTok", "youtube"));
 
@@ -1684,30 +1693,29 @@ console.log(username("twitter", "facebook", "instagram", "tikTok", "youtube"));
  si no la tenemos.
  */
 
- const CONNECTED_NETWORKS_ACCOUNTS_2 = {
-  twitter: '232424124314',
+const CONNECTED_NETWORKS_ACCOUNTS_2 = {
+  twitter: "232424124314",
   facebook: undefined,
-  instagram: 'gutufacio',
+  instagram: "gutufacio",
   tikTok: undefined,
-  youtube: 'robustio'
+  youtube: "robustio",
 };
 
 const username = (...socialMedias) => {
-  return socialMedias.map(socialMedia => {
+  return socialMedias.map((socialMedia) => {
     const account = CONNECTED_NETWORKS_ACCOUNTS_2[socialMedia.toLowerCase()];
 
     if (!isNaN(account)) {
-      return 'Usuario anónimo';
-    } else if (account === undefined){
+      return "Usuario anónimo";
+    } else if (account === undefined) {
       return "Nunca has conectado tu cuenta";
     } else {
       return account;
     }
   });
-}
+};
 
 console.log(username("instagram"));
-
 
 /**
  * 11. Algunas redes sociales se pueden conectar de distintas formas en función de ciertas características.
@@ -1752,7 +1760,9 @@ const isConnected = (network) => {
   const networkInLowerCase = network.toLowerCase();
 
   if (networkInLowerCase === "tiktok") {
-    return CONNECTED_NETWORKS.tikTokBusiness || CONNECTED_NETWORKS.tikTokPersonal;
+    return (
+      CONNECTED_NETWORKS.tikTokBusiness || CONNECTED_NETWORKS.tikTokPersonal
+    );
   }
 
   return CONNECTED_NETWORKS[networkInLowerCase];
@@ -1762,51 +1772,54 @@ const username = (socialMedia) => {
   const socialMediaInLowerCase = socialMedia.toLowerCase();
 
   if (socialMediaInLowerCase === "tiktok") {
-    return CONNECTED_NETWORKS_ACCOUNTS.tikTokBusiness || CONNECTED_NETWORKS_ACCOUNTS.tikTokPersonal;
+    return (
+      CONNECTED_NETWORKS_ACCOUNTS.tikTokBusiness ||
+      CONNECTED_NETWORKS_ACCOUNTS.tikTokPersonal
+    );
   }
 
   return CONNECTED_NETWORKS_ACCOUNTS[socialMediaInLowerCase];
-}
+};
 
 const correctNetworkName = (socialMedia) => {
   return CORRECT_NETWORKS_NAME[socialMedia];
-}
+};
 
 const chekArray = (AVAILABLE_NETWORKS) =>
-  AVAILABLE_NETWORKS.map(socialMedia => ({
-      network: socialMedia.toLowerCase(),
-      isConnected: isConnected(socialMedia),
-      username: username(socialMedia),
-      correctName: correctNetworkName(socialMedia),
+  AVAILABLE_NETWORKS.map((socialMedia) => ({
+    network: socialMedia.toLowerCase(),
+    isConnected: isConnected(socialMedia),
+    username: username(socialMedia),
+    correctName: correctNetworkName(socialMedia),
   }));
 
-  console.log(isConnected("tikTok")); // true (porque tikTokBusiness está conectado)
-  console.log(username("tikTok")); // "business_account"
-  console.log(chekArray(["twitter", "facebook", "tikTok", "youtube"]));
-  
-  /* EJERCICIO WHAT-IT-DOES-2 */
+console.log(isConnected("tikTok")); // true (porque tikTokBusiness está conectado)
+console.log(username("tikTok")); // "business_account"
+console.log(chekArray(["twitter", "facebook", "tikTok", "youtube"]));
 
-  /**
+/* EJERCICIO WHAT-IT-DOES-2 */
+
+/**
  * 1. Averigua qué hace la siguiente función
  */
 const getFileNameFromUrl = (url, includeExtension = false) => {
   try {
     const urlObject = new URL(url);
     if (urlObject) {
-      const fileName = urlObject.pathname.split('/').pop();
+      const fileName = urlObject.pathname.split("/").pop();
       if (fileName) {
         if (includeExtension) return fileName;
         return getFileNameWithoutExtension(fileName);
       }
     }
   } catch (error) {
-    console.error('Cannot get filename from url: ' + url);
+    console.error("Cannot get filename from url: " + url);
   }
 };
 
 const getFileNameWithoutExtension = (fileName) => {
   if (!fileName) return;
-  const lastDotIndex = fileName.lastIndexOf('.');
+  const lastDotIndex = fileName.lastIndexOf(".");
   return lastDotIndex > 0 ? fileName.substring(0, lastDotIndex) : fileName;
 };
 
@@ -1819,7 +1832,6 @@ si no se obtiene se ejecutara la funcion getFileNameWithoutExtension. La funcion
 del archivo y si tiene una extendion la elimina, si no la tiene devuelve el nombre del archivo. Por ultimo,
 si no funciona el codigo del try o la funcion getFileNameWithoutExtension, se ejecutara el apartado del catch 
 indicando el error*/
-
 
 /* EJERCICIO WHAT-IT-DOES-3 */
 /**
@@ -1835,7 +1847,7 @@ const getCountdownShapeFromSeconds = (seconds) => {
       days: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
     };
   }
 
@@ -1846,9 +1858,8 @@ const getCountdownShapeFromSeconds = (seconds) => {
     days: days,
     hours: hours,
     minutes: Math.floor(seconds / HOUR_IN_SECONDS / MINUTE_IN_SECONDS),
-    seconds: Math.floor(seconds % 60)
+    seconds: Math.floor(seconds % 60),
   };
-
 };
 
 console.log(getCountdownShapeFromSeconds(3661));
@@ -1870,7 +1881,7 @@ const getCountdownShapeFromSeconds = (seconds) => {
       days: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
     };
   }
 
@@ -1881,9 +1892,8 @@ const getCountdownShapeFromSeconds = (seconds) => {
     days: days,
     hours: hours,
     minutes: Math.floor((seconds % HOUR_IN_SECONDS) / MINUTE_IN_SECONDS),
-    seconds: Math.floor(seconds % 60)
+    seconds: Math.floor(seconds % 60),
   };
-
 };
 
 console.log(getCountdownShapeFromSeconds(3661));
@@ -1902,7 +1912,7 @@ const getCountdownShapeFromSeconds = (seconds, showDaysAsHours = false) => {
       days: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
     };
   }
 
@@ -1914,7 +1924,7 @@ const getCountdownShapeFromSeconds = (seconds, showDaysAsHours = false) => {
     return {
       hours: hours,
       minutes: Math.floor((seconds % HOUR_IN_SECONDS) / MINUTE_IN_SECONDS),
-      seconds: Math.floor(seconds % 60)
+      seconds: Math.floor(seconds % 60),
     };
   }
 
@@ -1922,9 +1932,8 @@ const getCountdownShapeFromSeconds = (seconds, showDaysAsHours = false) => {
     days: days,
     hours: hours,
     minutes: Math.floor((seconds % HOUR_IN_SECONDS) / MINUTE_IN_SECONDS),
-    seconds: Math.floor(seconds % 60)
+    seconds: Math.floor(seconds % 60),
   };
-
 };
 
 console.log(getCountdownShapeFromSeconds(86400, true));
@@ -1944,17 +1953,21 @@ const getCountdownFormatted = (params) => {
   };
 
   const getFormattedPadOrEmpty = (value) => {
-    return value === 'undefined' ? '' : `${zeroPad(value)}:`;
+    return value === "undefined" ? "" : `${zeroPad(value)}:`;
   };
 
   const formattedDays = getFormattedPadOrEmpty(days);
   const formattedHours = getFormattedPadOrEmpty(hours);
   const formattedMinutes = getFormattedPadOrEmpty(minutes);
 
-  return `${formattedDays}${formattedHours}${formattedMinutes}${zeroPad(seconds)}`;
+  return `${formattedDays}${formattedHours}${formattedMinutes}${zeroPad(
+    seconds
+  )}`;
 };
 
-console.log(getCountdownFormatted({ days: 2, hours: 5, minutes: 30, seconds: 45 }));
+console.log(
+  getCountdownFormatted({ days: 2, hours: 5, minutes: 30, seconds: 45 })
+);
 
 /* Esta funcion realiza una cuentra a tras formateada. Cuando les pasamos los parametros se almacenan en el objeto params
 que se encuentra arriba de todo de la funcion. Despues la funcion getFormattedPadOrEmpty mira si el valor es undefined
@@ -1977,17 +1990,21 @@ const getCountdownFormatted = (params) => {
   };
 
   const getFormattedPadOrEmpty = (value) => {
-    return value === 'undefined' ? '' : `${zeroPad(value)}:`;
+    return value === "undefined" ? "" : `${zeroPad(value)}:`;
   };
 
   const formattedDays = getFormattedPadOrEmpty(days);
   const formattedHours = getFormattedPadOrEmpty(hours);
   const formattedMinutes = getFormattedPadOrEmpty(minutes);
 
-  return `${formattedDays}${formattedHours}${formattedMinutes}${zeroPad(seconds)}`;
+  return `${formattedDays}${formattedHours}${formattedMinutes}${zeroPad(
+    seconds
+  )}`;
 };
 
-console.log(getCountdownFormatted({ days: 2, hours: 5, minutes: 30, seconds: 45 }));
+console.log(
+  getCountdownFormatted({ days: 2, hours: 5, minutes: 30, seconds: 45 })
+);
 
 /**
  * 3. Añádele un parámetro para que los días vayan en horas.
@@ -2005,10 +2022,10 @@ const addDaysToADate = (date, days) => {
   const daysToMs = days * 24 * 60 * 60 * 1000;
   const addingDaysToDate = dateToMs + daysToMs;
 
-  return new Date(addingDaysToDate);  
-}
+  return new Date(addingDaysToDate);
+};
 
-console.log(addDaysToADate('2024-12-31T15:21:38.207Z', 1));
+console.log(addDaysToADate("2024-12-31T15:21:38.207Z", 5));
 
 /**
  * 2. Crea una función que reste un número de días a una fecha.
@@ -2020,10 +2037,10 @@ const subtractDaysToADate = (date, days) => {
   const daysToMs = days * 24 * 60 * 60 * 1000;
   const subtractingDaysToDate = dateToMs - daysToMs;
 
-  return new Date(subtractingDaysToDate);  
-}
+  return new Date(subtractingDaysToDate);
+};
 
-console.log(subtractDaysToADate('2024-12-31T15:21:38.207Z', 1));
+console.log(subtractDaysToADate("2024-12-31T15:21:38.207Z", 1));
 
 /**
  * 3. Modifica la función del ejercicio 1 para que sea más genérica y que permita sumar días, horas, minutos o segundos
@@ -2033,29 +2050,29 @@ const addTimeToADate = (date, days, unitToSum) => {
   const dateObj = new Date(date);
   let timeToAdd;
 
-  if (unitToSum === 'days') {
-    timeToAdd = days * 1000 * 60 *60 * 24;
+  if (unitToSum === "days") {
+    timeToAdd = days * 1000 * 60 * 60 * 24;
   }
 
-  if (unitToSum === 'hours') {
+  if (unitToSum === "hours") {
     timeToAdd = days * 1000 * 60 * 60;
   }
 
-  if (unitToSum === 'minutes') {
-    timeToAdd = days * 1000 * 60 ;
+  if (unitToSum === "minutes") {
+    timeToAdd = days * 1000 * 60;
   }
 
-  if (unitToSum === 'seconds') {
-    timeToAdd = days * 1000 ;
+  if (unitToSum === "seconds") {
+    timeToAdd = days * 1000;
   }
 
   const dateToMs = dateObj.getTime();
   const addingTimeToDate = dateToMs + timeToAdd;
 
-  return new Date(addingTimeToDate);  
-}
+  return new Date(addingTimeToDate);
+};
 
-console.log(addTimeToADate('2024-12-31T15:21:38.207Z', 1, "days"));
+console.log(addTimeToADate("2024-12-31T15:21:38.207Z", 1, "days"));
 
 /**
  * 4.  Modifica la función del ejercicio 2 para que sea más genérica y que permita restar días, horas, minutos o segundos
@@ -2065,56 +2082,61 @@ const subtractTimeToADate = (date, days, unitToSum) => {
   const dateObj = new Date(date);
   let timeToAdd;
 
-  if (unitToSum === 'days') {
-    timeToAdd = days * 1000 * 60 *60 * 24;
+  if (unitToSum === "days") {
+    timeToAdd = days * 1000 * 60 * 60 * 24;
   }
 
-  if (unitToSum === 'hours') {
+  if (unitToSum === "hours") {
     timeToAdd = days * 1000 * 60 * 60;
   }
 
-  if (unitToSum === 'minutes') {
-    timeToAdd = days * 1000 * 60 ;
+  if (unitToSum === "minutes") {
+    timeToAdd = days * 1000 * 60;
   }
 
-  if (unitToSum === 'seconds') {
-    timeToAdd = days * 1000 ;
+  if (unitToSum === "seconds") {
+    timeToAdd = days * 1000;
   }
 
   const dateToMs = dateObj.getTime();
   const subtractingTimeToDate = dateToMs - timeToAdd;
 
-  return new Date(subtractingTimeToDate); 
-}
+  return new Date(subtractingTimeToDate);
+};
 
-console.log(subtractTimeToADate('2024-12-31T15:21:38.207Z', 1, 'hours'));
+console.log(subtractTimeToADate("2024-12-31T15:21:38.207Z", 1, "hours"));
 
 /**
  * 5. Crea una función que compruebe si una fecha está entre otras dos fechas.
  */
 
-const isBetweenDates = (date1, date2, date3) => {
-  const date1Obj = new Date(date1);
-  const date1ToMs = date1Obj.getTime();
+const isBetweenDates = (startDate, finishDate, dateToCheck) => {
+  const startDateObj = new Date(startDate);
+  const startDateToMs = startDateObj.getTime();
 
-  const date2Obj = new Date(date2);
-  const date2ToMs = date2Obj.getTime();
+  const finishDateObj = new Date(finishDate);
+  const finishDateToMs = finishDateObj.getTime();
 
-  const date3Obj = new Date(date3);
-  const date3ToMs = date3Obj.getTime();
+  const dateToCheckObj = new Date(dateToCheck);
+  const dateToCheckToMs = dateToCheckObj.getTime();
 
-  if (date3ToMs >= date1ToMs && date3ToMs <= date2ToMs) {
-    return 'date3 esta entre date1 y date2';
+  if (dateToCheckToMs >= startDateToMs && dateToCheckToMs <= finishDateToMs) {
+    return "dateToCheck esta entre startDate y finishDate";
   }
-  return 'date3 no esta entre date1 y date2'; 
-  
-}
+  return "dateToCheck no esta entre startDate y finishDate";
+};
 
-console.log(isBetweenDates('2024-12-01T15:21:38.207Z', '2024-12-03T15:21:38.207Z', '2024-12-02T15:21:38.207Z'));
+console.log(
+  isBetweenDates(
+    "2024-12-01T15:21:38.207Z",
+    "2024-12-03T15:21:38.207Z",
+    "2024-12-02T15:21:38.207Z"
+  )
+);
 
 /**
- * 6. Crea una función que devuelva cuánto tiempo ha pasado desde una fecha y la fecha actual en días, horas, minutos 
- * y segundos. Por ejemplo debe devolver un string que sea, "han pasado 2 días, 4 horas, 2 minutos y 1 segundos 
+ * 6. Crea una función que devuelva cuánto tiempo ha pasado desde una fecha y la fecha actual en días, horas, minutos
+ * y segundos. Por ejemplo debe devolver un string que sea, "han pasado 2 días, 4 horas, 2 minutos y 1 segundos
  * desde [FECHA_INTRODUCIDA]}"
  */
 
@@ -2123,24 +2145,24 @@ const calculateTimeSince = (date1) => {
   const now = new Date();
   const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
 
-  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
-  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
-  
-  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
-  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
-  
-  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
-  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
-  
-  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
-  
-  return `Han pasado ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos desde ${date1}`
-}
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000));
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000);
 
-console.log(calculateTimeSince('2025-01-12T09:02:16.459Z'));
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000));
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000);
+
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000));
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000);
+
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000);
+
+  return `Han pasado ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos desde ${date1}`;
+};
+
+console.log(calculateTimeSince("2025-01-12T09:02:16.459Z"));
 
 /**
- * 7. Si no lo has hecho, modifica la función anterior para que no salga la información que no sea relevante. 
+ * 7. Si no lo has hecho, modifica la función anterior para que no salga la información que no sea relevante.
  * Por ejemplo, si solo han pasado 10 segundos, no debería decir ni los días, las horas ni los minutos.
  */
 
@@ -2149,150 +2171,96 @@ const calculateTimeSince = (date1) => {
   const now = new Date();
   const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
 
-  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
-  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000));
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000);
 
-  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
-  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000));
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000);
 
-  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
-  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000));
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000);
 
-  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000);
 
   const parts = [];
 
   if (days > 0) {
-    parts.push(`${days} día${days > 1 ? 's' : ''}`);
+    parts.push(`${days} día${days > 1 ? "s" : ""}`);
   }
 
   if (hours > 0) {
-    parts.push(`${hours} hora${hours > 1 ? 's' : ''}`);
+    parts.push(`${hours} hora${hours > 1 ? "s" : ""}`);
   }
 
   if (minutes > 0) {
-    parts.push(`${minutes} minuto${minutes > 1 ? 's' : ''}`);
+    parts.push(`${minutes} minuto${minutes > 1 ? "s" : ""}`);
   }
 
   if (seconds > 0) {
-    parts.push(`${seconds} segundo${seconds > 1 ? 's' : ''}`);
+    parts.push(`${seconds} segundo${seconds > 1 ? "s" : ""}`);
   }
 
-  return `Han pasado ${parts.join(', ')} desde la fecha introducida.`;
-}
+  return `Han pasado ${parts.join(", ")} desde la fecha introducida.`;
+};
 
-console.log(calculateTimeSince('2024-01-05T09:02:16.459Z'));
+console.log(calculateTimeSince("2024-01-05T09:02:16.459Z"));
 
 /**
- * 8. Modifica la función anterior para que se le pueda pasar un objeto que permita desactivar los días, 
- * las horas, los minutos o los segundos. Por ejemplo, si le paso { days: false, hours: false } la función 
+ * 8. Modifica la función anterior para que se le pueda pasar un objeto que permita desactivar los días,
+ * las horas, los minutos o los segundos. Por ejemplo, si le paso { days: false, hours: false } la función
  * debe devolver solo los minutos y los segundos que han pasado.
  */
 
-//const calculateTimeSince = (date1, options = { days: true, hours: true, minutes: true, seconds: true }) => {
+const calculateTimeSince = (date1, options = { days: true, hours: true, minutes: true, seconds: true }) => {
   const date1Obj = new Date(date1);
   const now = new Date();
   const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
   console.log("Diferencia en ms:", msBetweenDates);
 
-  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
-  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000));
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000);
 
-  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
-  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000));
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000);
 
-  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
-  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000));
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000);
 
-  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000);
 
-  console.log("Días:", days, "Horas:", hours, "Minutos:", minutes, "Segundos:", seconds);
+  console.log(
+    "Días:",
+    days,
+    "Horas:",
+    hours,
+    "Minutos:",
+    minutes,
+    "Segundos:",
+    seconds
+  );
 
   const parts = [];
 
   if (days > 0 && options.days) {
-    parts.push(`${days} día${days > 1 ? 's' : ''}`);
-  } 
-  
+    parts.push(`${days} día${days > 1 ? "s" : ""}`);
+  }
+
   if (hours > 0 && options.hours) {
-    parts.push(`${hours} hora${hours > 1 ? 's' : ''}`);
+    parts.push(`${hours} hora${hours > 1 ? "s" : ""}`);
   }
 
   if (minutes > 0 && options.minutes) {
-    parts.push(`${minutes} minuto${minutes > 1 ? 's' : ''}`);
+    parts.push(`${minutes} minuto${minutes > 1 ? "s" : ""}`);
   }
 
   if (seconds > 0 && options.seconds) {
-    parts.push(`${seconds} segundo${seconds > 1 ? 's' : ''}`);
+    parts.push(`${seconds} segundo${seconds > 1 ? "s" : ""}`);
   }
 
-  return `Han pasado ${parts.join(', ')} desde la fecha introducida.`;
-}
-
-const SECONDS_IN_MILLISECONDS = 1000;
-const MINUTES_IN_MILLISECONDS = SECONDS_IN_MILLISECONDS * 60;
-const HOURS_IN_MILLISECONDS = MINUTES_IN_MILLISECONDS * 60;
-const DAYS_IN_MILLISECONDS = HOURS_IN_MILLISECONDS * 24;
-
-const timePassed = (fromDate, disableOutput = {}) => {
-  //Es importante predeclarar disableOutput como objeto para que tenga un valor y pueda usarse la desestructuración del objeto. En caso contrario, cuando no pasáramos ningún parametro en su lugar sería undefined y no nos permitiría aplicar sobre él la desestructuración.
-
-  if (fromDate > new Date()) {
-    return 'Esa fecha no ha llegado aún.';
-  }
-
-  const { days = true, hours = true, minutes = true, seconds = true } = disableOutput;
-
-  const timeBetweenThenAndNow = Date.now() - fromDate.getTime();
-
-  const day = days ? Math.floor(timeBetweenThenAndNow / DAYS_IN_MILLISECONDS) : 0;
-  let leftTime = days ? timeBetweenThenAndNow % DAYS_IN_MILLISECONDS : timeBetweenThenAndNow;
-
-  const hour = hours ? Math.floor(leftTime / HOURS_IN_MILLISECONDS) : 0;
-  leftTime = hours ? leftTime % HOURS_IN_MILLISECONDS : leftTime;
-
-  const min = minutes ? Math.floor(leftTime / MINUTES_IN_MILLISECONDS) : 0;
-  leftTime = minutes ? leftTime % HOURS_IN_MILLISECONDS : leftTime;
-
-  const sec = seconds ? Math.floor(leftTime / SECONDS_IN_MILLISECONDS) : 0;
-
-  const dayText = days && timeBetweenThenAndNow >= DAYS_IN_MILLISECONDS ? ` ${day} días,` : '';
-  const hourText = hours && timeBetweenThenAndNow >= HOURS_IN_MILLISECONDS ? ` ${hour} horas,` : '';
-  const minText = minutes && timeBetweenThenAndNow >= MINUTES_IN_MILLISECONDS ? ` ${min} minutos` : '';
-  const secText = seconds && timeBetweenThenAndNow >= 1000 ? ` ${sec} segundos` : '';
-
-  const connectSentence = minText && secText ? ' y' : '';
-
-  const sameTime = timeBetweenThenAndNow === 0 ? ' nada, estás comparando las mismas horas' : '';
-
-  return `Desde ${fromDate.toLocaleString()} hasta ahora, han pasado:${days ? dayText : ''}${hours ? hourText : ''}${
-    minutes ? minText : ''
-  }${seconds ? connectSentence : ''}${seconds ? secText : ''}${sameTime}.`;
+  return `Han pasado ${parts.join(", ")} desde la fecha introducida.`;
 };
 
-console.log('normal', timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS)));
-console.log('sin dias', timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false }));
-console.log(
-  'sin dias ni minutos',
-  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false, hours: false })
-);
-console.log(
-  'solo segundos',
-  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false, hours: false, minutes: false })
-);
-console.log(
-  'sin nada',
-  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS), { days: false, hours: false, minutes: false, seconds: false })
-);
-console.log(
-  'con dias y minutos',
-  timePassed(new Date(Date.now() - DAYS_IN_MILLISECONDS - 80000), {
-    days: true,
-    hours: false,
-    minutes: true,
-    seconds: false
-  })
-);
+console.log(calculateTimeSince('2024-01-05T09:02:16.459Z', { days: false, hours: false }));
 
 /**
  * 9. Crea una función como la anterior, pero que indique cuánto tiempo queda para una fecha específica.
@@ -2308,65 +2276,66 @@ const calculateTimeSince = (date1, date2) => {
 
   const msBetweenDates = Math.abs(date1Obj.getTime() - date2Obj.getTime());
 
-  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000)); 
-  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000); 
-  
-  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000)); 
-  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000); 
-  
-  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000)); 
-  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000); 
-  
-  const seconds = Math.floor(remainingMsAfterMinutes / 1000); 
-  
-  return `Quedan ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos hasta ${date2}`
-}
+  const days = Math.floor(msBetweenDates / (24 * 60 * 60 * 1000));
+  const remainingMsAfterDays = msBetweenDates % (24 * 60 * 60 * 1000);
 
-console.log(calculateTimeSince('2025-01-12T09:02:16.459Z', '2025-01-13T09:02:16.459Z'));
+  const hours = Math.floor(remainingMsAfterDays / (60 * 60 * 1000));
+  const remainingMsAfterHours = remainingMsAfterDays % (60 * 60 * 1000);
+
+  const minutes = Math.floor(remainingMsAfterHours / (60 * 1000));
+  const remainingMsAfterMinutes = remainingMsAfterHours % (60 * 1000);
+
+  const seconds = Math.floor(remainingMsAfterMinutes / 1000);
+
+  return `Quedan ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos hasta ${date2}`;
+};
+
+console.log(
+  calculateTimeSince("2025-01-12T09:02:16.459Z", "2025-01-13T09:02:16.459Z")
+);
 
 /**
- * 10. Dado el array de ejemplo que pongo, haz una función que filtre las tareas completadas el 
+ * 10. Dado el array de ejemplo que pongo, haz una función que filtre las tareas completadas el
  * 9 de enero durante todo el día
  */
 
 const tasks = [
   {
-    text: 'Hacer la compra',
+    text: "Hacer la compra",
     completed: true,
-    completedAt: '2025-01-10T15:54:40.088Z'
+    completedAt: "2025-01-10T15:54:40.088Z",
   },
   {
-    text: 'Ir a clase',
+    text: "Ir a clase",
     completed: true,
-    completedAt: '2025-01-09T15:00:40.088Z'
+    completedAt: "2025-01-09T15:00:40.088Z",
   },
   {
-    text: 'Comer',
+    text: "Comer",
     completed: true,
-    completedAt: '2025-01-09T14:00:40.088Z'
+    completedAt: "2025-01-09T14:00:40.088Z",
   },
   {
-    text: 'Repasar javascript',
-    completed: false
-  }
+    text: "Repasar javascript",
+    completed: false,
+  },
 ];
 
 const completedTasks = (tasks) => {
-  const startOfDay = new Date('2025-01-09T00:00:00.000Z'); 
-  const endOfDay = new Date('2025-01-09T23:59:59.999Z');
+  const startOfDay = new Date("2025-01-09T00:00:00.000Z");
+  const endOfDay = new Date("2025-01-09T23:59:59.999Z");
   const startOfDayMs = startOfDay.getTime();
   const endOfDayMs = endOfDay.getTime();
 
   return tasks.filter((task) => {
-    if (task.completed === true && (new Date(task.completedAt).getTime()) >= startOfDayMs 
-      && (new Date(task.completedAt).getTime()) <= endOfDayMs) {
+    if (
+      task.completed === true &&
+      new Date(task.completedAt).getTime() >= startOfDayMs &&
+      new Date(task.completedAt).getTime() <= endOfDayMs
+    ) {
       return true;
     }
   });
 };
 
 console.log(completedTasks(tasks));
-
-
-
-
