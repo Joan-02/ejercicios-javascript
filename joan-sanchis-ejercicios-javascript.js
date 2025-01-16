@@ -2211,7 +2211,10 @@ console.log(calculateTimeSince("2024-01-05T09:02:16.459Z"));
  * debe devolver solo los minutos y los segundos que han pasado.
  */
 
-const calculateTimeSince = (date1, options = { days: true, hours: true, minutes: true, seconds: true }) => {
+const calculateTimeSince = (
+  date1,
+  options = { days: true, hours: true, minutes: true, seconds: true }
+) => {
   const date1Obj = new Date(date1);
   const now = new Date();
   const msBetweenDates = Math.abs(date1Obj.getTime() - now.getTime());
@@ -2260,7 +2263,9 @@ const calculateTimeSince = (date1, options = { days: true, hours: true, minutes:
   return `Han pasado ${parts.join(", ")} desde la fecha introducida.`;
 };
 
-console.log(calculateTimeSince('2024-01-05T09:02:16.459Z', { days: false, hours: false }));
+console.log(
+  calculateTimeSince("2024-01-05T09:02:16.459Z", { days: false, hours: false })
+);
 
 /**
  * 9. Crea una función como la anterior, pero que indique cuánto tiempo queda para una fecha específica.
@@ -2339,3 +2344,55 @@ const completedTasks = (tasks) => {
 };
 
 console.log(completedTasks(tasks));
+
+/**
+ * 1. Vamos a hacer una función a la que le pasamos un número y nos va a devolver
+ * un array del tamaño igual al número que le pasamos con tareas random.
+ *
+ * Una tarea random es una tarea con un texto aleatorio, por ejemplo "Tarea de prueba 402"
+ * También tiene que tener una fecha random con un mes aleatorio entre 0 y 11, y un dia aleatorio entre 1 y 28
+ * y aleatoriamente también, las tareas pueden estar completadas o no
+ *
+ */
+
+const getRandomTaskArray = (num) => {
+  const tasksList = [];
+
+  for (let counter = 1; counter <= num; counter++) {
+    const randomNum = Math.floor(Math.random() * 100);
+    const randomTask = `Tarea de prueba ${randomNum}`;
+    const randomDay = Math.floor(Math.random() * 29);
+    const randomMonth = Math.floor(Math.random() * 12);
+    const dateRandom = new Date(2025, randomMonth, randomDay);
+    const random0Or1 = Math.floor(Math.random() * 2);
+
+    tasksList.push({
+      task: randomTask,
+      date: dateRandom,
+      completed: random0Or1 === 0 ? true : false,
+    });
+  }
+
+  return tasksList;
+};
+
+console.log(getRandomTaskArray(2));
+
+const categorizedTasks = (tasksList) => {
+  tasksList.forEach((task) => {});
+};
+
+categorizedTasks(getRandomTaskArray(200));
+
+// crear un objetto e ir metiendole las tareas del array al objeto, clave valor
+
+/**
+ * 2. Haz una función que categorice las tareas por mes, y dentro del mes, por día.
+ * Por ejemplo el objeto resultante sería algo así:
+ *  {
+ *    0: {
+ *       1: [ARRAY DE TAREAS]
+ *    }
+ *  }
+ * En [ARRAY DE TAREAS] estarán todas las tareas del día 1 de enero.
+ */
