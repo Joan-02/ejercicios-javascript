@@ -2361,7 +2361,7 @@ const getRandomTaskArray = (num) => {
   for (let counter = 1; counter <= num; counter++) {
     const randomNum = Math.floor(Math.random() * 100);
     const randomTask = `Tarea de prueba ${randomNum}`;
-    const randomDay = Math.floor(Math.random() * 29);
+    const randomDay = Math.floor(Math.random() * 29) + 1;
     const randomMonth = Math.floor(Math.random() * 12);
     const dateRandom = new Date(2025, randomMonth, randomDay);
     const random0Or1 = Math.floor(Math.random() * 2);
@@ -2376,15 +2376,31 @@ const getRandomTaskArray = (num) => {
   return tasksList;
 };
 
-console.log(getRandomTaskArray(2));
-
 const categorizedTasks = (tasksList) => {
-  tasksList.forEach((task) => {});
+
+  const tasksListObject = {};
+
+  tasksList.forEach((task) => {
+
+    const monthDate = task.date.getMonth() + 1;
+    const dayDate = task.date.getDate();
+    // console.log(monthDate, dayDate);
+
+    if (!tasksListObject[monthDate]) {
+      tasksListObject[monthDate] = {};
+    }
+
+    if (!tasksListObject[monthDate][dayDate]) {
+      tasksListObject[monthDate][dayDate] = [];
+    }
+
+    tasksListObject[monthDate][dayDate].push(task);
+  });
+  
+  return tasksListObject;
 };
 
-categorizedTasks(getRandomTaskArray(200));
-
-// crear un objetto e ir metiendole las tareas del array al objeto, clave valor
+console.dir(categorizedTasks(getRandomTaskArray(10)), { depth: null });
 
 /**
  * 2. Haz una función que categorice las tareas por mes, y dentro del mes, por día.
@@ -2396,3 +2412,5 @@ categorizedTasks(getRandomTaskArray(200));
  *  }
  * En [ARRAY DE TAREAS] estarán todas las tareas del día 1 de enero.
  */
+
+// crear un objetto e ir metiendole las tareas del array al objeto, clave valor
