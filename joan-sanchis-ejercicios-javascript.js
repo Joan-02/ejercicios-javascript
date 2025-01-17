@@ -2244,27 +2244,32 @@ const calculateTimeSince = (
 
   const parts = [];
 
-  if (days > 0 && options.days) {
+  if (options.days !== false && days > 0) {
     parts.push(`${days} día${days > 1 ? "s" : ""}`);
   }
 
-  if (hours > 0 && options.hours) {
+  if (options.hours !== false && hours > 0) {
     parts.push(`${hours} hora${hours > 1 ? "s" : ""}`);
   }
 
-  if (minutes > 0 && options.minutes) {
+  if (options.minutes !== false && minutes > 0) {
     parts.push(`${minutes} minuto${minutes > 1 ? "s" : ""}`);
   }
 
-  if (seconds > 0 && options.seconds) {
+  if (options.seconds !== false && seconds > 0) {
     parts.push(`${seconds} segundo${seconds > 1 ? "s" : ""}`);
+  }
+
+  // Si no hay ninguna parte agregada, se devolverá una cadena indicando que no ha pasado tiempo.
+  if (parts.length === 0) {
+    return "No ha pasado tiempo desde la fecha introducida.";
   }
 
   return `Han pasado ${parts.join(", ")} desde la fecha introducida.`;
 };
 
 console.log(
-  calculateTimeSince("2024-01-05T09:02:16.459Z", { days: false, hours: false })
+  calculateTimeSince("2024-01-05T09:02:16.459Z", { minuts: false})
 );
 
 /**
