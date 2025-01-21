@@ -2389,7 +2389,6 @@ const categorizedTasks = (tasksList) => {
 
     const monthDate = task.date.getMonth() + 1;
     const dayDate = task.date.getDate();
-    // console.log(monthDate, dayDate);
 
     if (!tasksListObject[monthDate]) {
       tasksListObject[monthDate] = {};
