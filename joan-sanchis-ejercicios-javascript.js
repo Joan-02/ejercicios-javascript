@@ -2360,16 +2360,23 @@ console.log(completedTasks(tasks));
  *
  */
 
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const getRandomTaskArray = (num) => {
   const tasksList = [];
 
   for (let counter = 1; counter <= num; counter++) {
-    const randomNum = Math.floor(Math.random() * 100);
+    const randomNum = getRandomInt(0, 200);
     const randomTask = `Tarea de prueba ${randomNum}`;
-    const randomDay = Math.floor(Math.random() * 29) + 1;
-    const randomMonth = Math.floor(Math.random() * 12);
+    const randomDay = getRandomInt(0, 28);
+    const randomMonth = getRandomInt(0, 11);
     const dateRandom = new Date(2025, randomMonth, randomDay);
-    const random0Or1 = Math.floor(Math.random() * 2);
+    const random0Or1 = getRandomInt(0, 1);
 
     tasksList.push({
       task: randomTask,
@@ -2380,6 +2387,8 @@ const getRandomTaskArray = (num) => {
 
   return tasksList;
 };
+
+console.log(getRandomTaskArray(10))
 
 /**
  * 2. Haz una función que categorice las tareas por mes, y dentro del mes, por día.
@@ -2417,4 +2426,5 @@ const categorizedTasks = (tasksList) => {
   return tasksListObject;
 };
 
+console.log(categorizedTasks(getRandomTaskArray(10)));
 console.dir(categorizedTasks(getRandomTaskArray(10)), { depth: null });
