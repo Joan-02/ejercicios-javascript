@@ -2381,6 +2381,19 @@ const getRandomTaskArray = (num) => {
   return tasksList;
 };
 
+/**
+ * 2. Haz una función que categorice las tareas por mes, y dentro del mes, por día.
+ * Por ejemplo el objeto resultante sería algo así:
+ *  {
+ *    0: {
+ *       1: [ARRAY DE TAREAS]
+ *    }
+ *  }
+ * En [ARRAY DE TAREAS] estarán todas las tareas del día 1 de enero.
+ */
+
+// crear un objetto e ir metiendole las tareas del array al objeto, clave valor
+
 const categorizedTasks = (tasksList) => {
 
   const tasksListObject = {};
@@ -2405,16 +2418,3 @@ const categorizedTasks = (tasksList) => {
 };
 
 console.dir(categorizedTasks(getRandomTaskArray(10)), { depth: null });
-
-/**
- * 2. Haz una función que categorice las tareas por mes, y dentro del mes, por día.
- * Por ejemplo el objeto resultante sería algo así:
- *  {
- *    0: {
- *       1: [ARRAY DE TAREAS]
- *    }
- *  }
- * En [ARRAY DE TAREAS] estarán todas las tareas del día 1 de enero.
- */
-
-// crear un objetto e ir metiendole las tareas del array al objeto, clave valor
